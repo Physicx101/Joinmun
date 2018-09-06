@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "668887050716",
+    "firebase_url": "https://joinmun-864f5.firebaseio.com",
+    "project_id": "joinmun-864f5",
+    "storage_bucket": "joinmun-864f5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:668887050716:android:855e1b019877b44f",
+        "android_client_info": {
+          "package_name": "com.example.joinmun"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "668887050716-q2cok7ddjirl4ia3or9m9kou2813pol6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdjC4tGDfUTjY-9YWKXJrOUN3YSZZNrbU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,109 @@
+name: joinmun
+description: A new Flutter project.
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cloud_firestore: ^0.7.3
+  uri: ^0.11.3
+  url_launcher: ^3.0.3
+
+  # The following adds the Cupertino Icons font to your application.
+  # Use with the CupertinoIcons class for iOS style icons.
+  cupertino_icons: ^0.1.2
+
+dependency_overrides:
+  quiver: ^2.0.0+1
+
+
+
+# For information on the generic Dart part of this file, see the
+# following page: https://www.dartlang.org/tools/pub/pubspec
+
+# The following section is specific to Flutter.
+flutter:
+
+  # The following line ensures that the Material Icons font is
+  # included with your application, so that you can use the icons in
+  # the material Icons class.
+  uses-material-design: true
+
+
+  assets:
+    - assets/ic_bus.png
+    - assets/ic_taxi.png
+    - assets/ic_place_orange_24.png
+    - assets/ic_train_orange_24.png
+    - assets/ic_googlemap.png
+    - assets/nothing_here.png
+    - assets/img_drawer_header.png
+    - assets/pesto/avatar.jpg
+    - assets/pesto/image10.jpg
+    - assets/pesto/image11.jpg
+    - assets/pesto/image12.jpg
+    - assets/pesto/image13.jpg
+    - assets/pesto/image1.jpg
+    - assets/pesto/image2.jpg
+    - assets/pesto/image3.jpg
+    - assets/pesto/image4.jpg
+    - assets/pesto/image5.jpg
+    - assets/pesto/image6.jpg
+    - assets/pesto/image7.jpg
+    - assets/pesto/image8.jpg
+    - assets/pesto/image9.jpg
+    - assets/pesto/logo_small.png
+    - assets/pesto/logo_medium.png
+    - assets/pesto/fish.png
+    - assets/pesto/healthy.png
+    - assets/pesto/main.png
+    - assets/pesto/meat.png
+    - assets/pesto/quick.png
+    - assets/pesto/spicy.png
+    - assets/pesto/veggie.png
+
+
+  fonts:
+    - family: CenturyGothic
+      fonts:
+        - asset: fonts/CenturyGothicRegular.ttf
+          weight: 500
+    - family: LemonMilk
+      fonts:
+        - asset: fonts/LemonMilk.otf
+          weight: 500
+        - asset: fonts/LemonMilklight.otf
+          weight: 300
+        - asset: fonts/LemonMilkbold.otf
+          weight: 700
+    - family: League Spartan
+      fonts:
+        - asset: fonts/LeagueSpartan-Bold.otf
+          weight: 700
+    - family: Quicksand
+      fonts:
+        - asset: fonts/Quicksand-Light.ttf
+          weight: 300
+        - asset: fonts/Quicksand-Regular.ttf
+          weight: 400
+        - asset: fonts/Quicksand-Medium.ttf
+          weight: 500
+        - asset: fonts/Quicksand-Bold.ttf
+          weight: 700
+    - family: GoogleSans
+      fonts:
+        - asset: fonts/GoogleSans-BoldItalic.ttf
+          weight: 700
+          style: italic
+        - asset: fonts/GoogleSans-Bold.ttf
+          weight: 700
+        - asset: fonts/GoogleSans-Italic.ttf
+          weight: 400
+          style: italic
+        - asset: fonts/GoogleSans-MediumItalic.ttf
+          weight: 500
+          style: italic
+        - asset: fonts/GoogleSans-Medium.ttf
+          weight: 500
+        - asset: fonts/GoogleSans-Regular.ttf
+          weight: 400
+       
