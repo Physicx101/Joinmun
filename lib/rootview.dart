@@ -9,6 +9,7 @@ import 'package:joinmun/more/more.dart';
 import 'package:joinmun/drawer.dart';
 import 'package:joinmun/explore/map.dart';
 import 'package:joinmun/page_container.dart';
+import 'package:joinmun/home/home.dart';
 
 
 
@@ -42,7 +43,7 @@ class _RootViewState extends State<RootView> with TickerProviderStateMixin {
           title: "Home",
           icon: new Icon(Icons.home),
           hasTab: true,
-          body: () => new ScheduleView(),
+          body: () => new HomeView(),
           tickerProvider: this,
         ),
         new PageContainer(
@@ -63,14 +64,14 @@ class _RootViewState extends State<RootView> with TickerProviderStateMixin {
           title: "Explore",
           icon: new Icon(Icons.explore),
           hasTab: false,
-          body: () => new MapPage(),
+          body: () => new ScheduleView(),
           tickerProvider: this,
         ),
          new PageContainer(
           title: "Documents",
           icon: new Icon(Icons.book),
           hasTab: false,
-          body: () => new EventView(),
+          body: () => new ScheduleView(),
           tickerProvider: this,
         ),
          new PageContainer(

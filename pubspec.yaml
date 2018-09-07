@@ -30,6 +30,10 @@ flutter:
 
 
   assets:
+    - assets/fakhri.jpg
+    - assets/ic_fb.png
+    - assets/ic_twitter.png
+    - assets/ic_ig.png
     - assets/ic_bus.png
     - assets/ic_taxi.png
     - assets/ic_place_orange_24.png
