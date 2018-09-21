@@ -67,6 +67,8 @@ PODS:
     - FirebaseCore (~> 5.1)
     - GoogleUtilities/Environment (~> 5.2)
   - Flutter (1.0.0)
+  - flutter_webview_plugin (0.0.1):
+    - Flutter
   - GoogleAppMeasurement (5.1.0):
     - GoogleUtilities/AppDelegateSwizzler (~> 5.2.0)
     - GoogleUtilities/MethodSwizzler (~> 5.2.0)
@@ -124,6 +126,7 @@ DEPENDENCIES:
   - cloud_firestore (from `.symlinks/plugins/cloud_firestore/ios`)
   - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
   - Flutter (from `.symlinks/flutter/ios`)
+  - flutter_webview_plugin (from `.symlinks/plugins/flutter_webview_plugin/ios`)
   - url_launcher (from `.symlinks/plugins/url_launcher/ios`)
 
 SPEC REPOS:
@@ -155,6 +158,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/firebase_core/ios"
   Flutter:
     :path: ".symlinks/flutter/ios"
+  flutter_webview_plugin:
+    :path: ".symlinks/plugins/flutter_webview_plugin/ios"
   url_launcher:
     :path: ".symlinks/plugins/url_launcher/ios"
 
@@ -171,6 +176,7 @@ SPEC CHECKSUMS:
   FirebaseFirestore: 0a6e4b9256ae39ed41258aa46213975c93908a74
   FirebaseInstanceID: 8cd2c6cfe7b9ab65ce7e248f6da7f26f6775b9be
   Flutter: 9d0fac939486c9aba2809b7982dfdbb47a7b0296
+  flutter_webview_plugin: 116575b48572029304775b768e9f15ebfc316274
   GoogleAppMeasurement: e785bdb86d3d280abc778156cec323a975f11d1d
   GoogleUtilities: 8d9fa00248c475b606fd20b562242060a20117a2
   gRPC: 9d4c549f37c7cef22478634bac7a0405b6e3dbfb

@@ -33,7 +33,7 @@ class DayTwo extends StatelessWidget {
       '16:30 - 18:00',
       '18:00 - 18:30',
       '18:30 - 19:30',
-      'TBA'
+      '20:00 - 23:30'
     ];
     var theme = Theme.of(context);
 

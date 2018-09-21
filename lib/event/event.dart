@@ -6,6 +6,7 @@ import 'package:joinmun/utils/flexible_app_bar_widget.dart';
 
 class Event {
   final String name;
+  final String time;
   final String dressCode;
   final String image;
   final String imagePath;
@@ -20,6 +21,7 @@ class Event {
 
   const Event(
       {this.name,
+        this.time,
       this.dressCode,
       this.image,
       this.imagePath,
@@ -86,13 +88,8 @@ const List<Event> kEvenLists = const <Event>[
     imagePath: "assets/pesto/",
     icon: Icons.stars,
     floor: "Ground floor",
-    when: "Thursday, 6 April at 16:00",
+    when: "Thursday, 25 October at 16:00 - 18:00",
     description: """
-In this day and age, the Android UI is getting more and more features. Which is amazing. But they get layered on top of years of TODOs, less-than-clean code, and quick patches. This means the APIs are not as terse as us devs would like, and there’s plenty of unwritten knowledge to have to make things work. What if there was something that took the best bits of the Android UI model and wrapped that in a modern, sensible codebase?
-
-Turns out, there is. It’s part of a “native cross-platform” framework, Flutter, that is being developed in Google and used in some of their products. While still a long way from stable and feature-complete, Flutter has an interesting approach of including a full framework based off of Dart. It’s modeled on the good bits of the Android UI framework and will allow your code to run consistently across devices, without the weird BSP- or vendor-specific issues we unfortunately got used to.
-
-This talk is going to give you an overview of that framework, highlight where it differs from the Android one, and give you an idea of where things are at this stage of the Flutter development. Let’s try to understand if Flutter is something to look forward to
 In this day and age, the Android UI is getting more and more features. Which is amazing. But they get layered on top of years of TODOs, less-than-clean code, and quick patches. This means the APIs are not as terse as us devs would like, and there’s plenty of unwritten knowledge to have to make things work. What if there was something that took the best bits of the Android UI model and wrapped that in a modern, sensible codebase?
 """,
   ),
@@ -127,13 +124,8 @@ In this day and age, the Android UI is getting more and more features. Which is 
     imagePath: "assets/pesto/",
     icon: Icons.stars,
     floor: "Ground floor",
-    when: "Thursday, 6 April at 16:00",
+    when: "Thursday, 25 October at 16:00 - 18:00",
     description: """
-In this day and age, the Android UI is getting more and more features. Which is amazing. But they get layered on top of years of TODOs, less-than-clean code, and quick patches. This means the APIs are not as terse as us devs would like, and there’s plenty of unwritten knowledge to have to make things work. What if there was something that took the best bits of the Android UI model and wrapped that in a modern, sensible codebase?
-
-Turns out, there is. It’s part of a “native cross-platform” framework, Flutter, that is being developed in Google and used in some of their products. While still a long way from stable and feature-complete, Flutter has an interesting approach of including a full framework based off of Dart. It’s modeled on the good bits of the Android UI framework and will allow your code to run consistently across devices, without the weird BSP- or vendor-specific issues we unfortunately got used to.
-
-This talk is going to give you an overview of that framework, highlight where it differs from the Android one, and give you an idea of where things are at this stage of the Flutter development. Let’s try to understand if Flutter is something to look forward to
 In this day and age, the Android UI is getting more and more features. Which is amazing. But they get layered on top of years of TODOs, less-than-clean code, and quick patches. This means the APIs are not as terse as us devs would like, and there’s plenty of unwritten knowledge to have to make things work. What if there was something that took the best bits of the Android UI model and wrapped that in a modern, sensible codebase?
 """,
   ),
@@ -168,13 +160,8 @@ In this day and age, the Android UI is getting more and more features. Which is 
     imagePath: "assets/pesto/",
     icon: Icons.local_bar,
     floor: "Ground floor",
-    when: "Thursday, 6 April at 16:00",
+    when: "Thursday, 25 October at 16:00 - 18:00",
     description: """
-In this day and age, the Android UI is getting more and more features. Which is amazing. But they get layered on top of years of TODOs, less-than-clean code, and quick patches. This means the APIs are not as terse as us devs would like, and there’s plenty of unwritten knowledge to have to make things work. What if there was something that took the best bits of the Android UI model and wrapped that in a modern, sensible codebase?
-
-Turns out, there is. It’s part of a “native cross-platform” framework, Flutter, that is being developed in Google and used in some of their products. While still a long way from stable and feature-complete, Flutter has an interesting approach of including a full framework based off of Dart. It’s modeled on the good bits of the Android UI framework and will allow your code to run consistently across devices, without the weird BSP- or vendor-specific issues we unfortunately got used to.
-
-This talk is going to give you an overview of that framework, highlight where it differs from the Android one, and give you an idea of where things are at this stage of the Flutter development. Let’s try to understand if Flutter is something to look forward to
 In this day and age, the Android UI is getting more and more features. Which is amazing. But they get layered on top of years of TODOs, less-than-clean code, and quick patches. This means the APIs are not as terse as us devs would like, and there’s plenty of unwritten knowledge to have to make things work. What if there was something that took the best bits of the Android UI model and wrapped that in a modern, sensible codebase?
 """,
   ),
@@ -209,13 +196,8 @@ In this day and age, the Android UI is getting more and more features. Which is 
     imagePath: "assets/pesto/",
     icon: Icons.directions_bus,
     floor: "Ground floor",
-    when: "Thursday, 6 April at 16:00",
+    when: "Thursday, 25 October at 16:00 - 18:00",
     description: """
-In this day and age, the Android UI is getting more and more features. Which is amazing. But they get layered on top of years of TODOs, less-than-clean code, and quick patches. This means the APIs are not as terse as us devs would like, and there’s plenty of unwritten knowledge to have to make things work. What if there was something that took the best bits of the Android UI model and wrapped that in a modern, sensible codebase?
-
-Turns out, there is. It’s part of a “native cross-platform” framework, Flutter, that is being developed in Google and used in some of their products. While still a long way from stable and feature-complete, Flutter has an interesting approach of including a full framework based off of Dart. It’s modeled on the good bits of the Android UI framework and will allow your code to run consistently across devices, without the weird BSP- or vendor-specific issues we unfortunately got used to.
-
-This talk is going to give you an overview of that framework, highlight where it differs from the Android one, and give you an idea of where things are at this stage of the Flutter development. Let’s try to understand if Flutter is something to look forward to
 In this day and age, the Android UI is getting more and more features. Which is amazing. But they get layered on top of years of TODOs, less-than-clean code, and quick patches. This means the APIs are not as terse as us devs would like, and there’s plenty of unwritten knowledge to have to make things work. What if there was something that took the best bits of the Android UI model and wrapped that in a modern, sensible codebase?
 """,
   ),
@@ -249,12 +231,19 @@ class EventStyle extends TextStyle {
 class EventCardWidget extends StatelessWidget {
   EventCardWidget(this.event);
 
-  static final double height = 322.0;
 
   final Event event;
 
   @override
   Widget build(BuildContext context) {
+    var theme = Theme.of(context);
+    final TextStyle descriptionStyle = theme.textTheme.subhead;
+    final TextStyle titleStyle = const TextStyle(
+        fontSize: 24.0, fontWeight: FontWeight.w500, fontFamily: 'LemonMilk');
+    final TextStyle dayStyle = const TextStyle(
+        fontSize: 18.0, fontWeight: FontWeight.w500, fontFamily: 'CenturyGothic');
+    final TextStyle timeStyle = const TextStyle(
+    fontSize: 20.0, fontWeight: FontWeight.w500, fontFamily: 'CenturyGothic');
     Image image;
 
     if (event.image != null) {
@@ -269,30 +258,60 @@ class EventCardWidget extends StatelessWidget {
       );
     }
 
-    final Card card = new Card(
-      child: new Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          new Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: new Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: <Widget>[
-                new Text(
-                  event.name ?? '',
-                  softWrap: false,
-                  overflow: TextOverflow.ellipsis,
+    final SafeArea card = new SafeArea(
+      top: false,
+      bottom: false,
+      child: new Container(
+        child: new Card(
+          elevation: 0.0,
+          child: new Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              // photo and title
+              new SizedBox(
+                height: 184.0,
+                child: new Stack(
+                  children: <Widget>[//TODO: fix hero animation
+                    new Positioned.fill(
+                        child: new ClipRRect(
+                          borderRadius: new BorderRadius.circular(8.0),
+                          child: new Image.asset(event.image,
+                            fit: BoxFit.cover,),
+                        )
+                    ),
+                  ],
                 ),
-                const Padding(padding: const EdgeInsets.only(top: 8.0)),
-                new Text(
-                  event.description ?? '',
-                  maxLines: 3,
-                  overflow: TextOverflow.ellipsis,
+              ),
+              new Expanded(
+                child: new Padding(
+                  padding: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0.0),
+                  child: new DefaultTextStyle(
+                    style: descriptionStyle,
+                    softWrap: false,
+                    overflow: TextOverflow.ellipsis,
+                    child: new Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        new Padding(
+                          padding: const EdgeInsets.only(bottom: 4.0),
+                          child: new Text(
+                            event.name,
+                            style: titleStyle,
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 2.0),
+                          child: new Text("Rabu, 17 Agustus 1945",  style: timeStyle.copyWith(color: Colors.black54),),
+                        ),
+                        new Text("16:00  - 18:00",  style: timeStyle.copyWith(color: Colors.black54),),
+                      ],
+                    ),
+                  ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
-        ],
+        ),
       ),
     );
 
@@ -309,11 +328,11 @@ class EventCardWidget extends StatelessWidget {
     Navigator.push(
       context,
       new MaterialPageRoute<Null>(
-        settings: const RouteSettings(name: '/sessions/session'),
+        settings: const RouteSettings(name:'event'),
         builder: (BuildContext context) {
           return new Theme(
             data: Theme.of(context),
-            child: new EventPage(event),
+            child: new EventDetail(event),
           );
         },
       ),
@@ -321,16 +340,58 @@ class EventCardWidget extends StatelessWidget {
   }
 }
 
-class EventPage extends StatelessWidget {
-  final scaffoldKey = new GlobalKey<ScaffoldState>();
+class EventDetail extends StatelessWidget {
+
+
   final Event event;
 
-
-  EventPage(this.event);
-
+  EventDetail(this.event);
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
+
+    List<Widget> _speakersWidgets
+        (TextStyle speakerTextStyle, List<Speaker> speakers) {
+      final speakerNames = speakers.map((speaker) => speaker.fullName).join(", ");
+
+      final speakerNamesWidget = new Text(speakerNames, style: speakerTextStyle);
+
+      return [
+        new Row(
+            children: speakers
+                .map((speaker) =>
+            new Padding(
+              padding: new EdgeInsets.only(right: 6.0),
+              child: new CircleAvatar(
+                backgroundImage: new NetworkImage(speaker.avatarUrl),
+                radius: 20.0,
+              ),
+            )
+            )
+                .toList()),
+        new Padding(
+            padding: new EdgeInsets.only(top: 9.0), child: speakerNamesWidget),
+      ];
+    }
+
+    Widget _rowWithLabelWidget(String label,
+        TextStyle labelTextStyle,
+        double labelChildrenInset,
+        Iterable<Widget> children) =>
+        new Padding(
+          padding: new EdgeInsets.only(bottom: 32.0),
+          child: new Row(
+            crossAxisAlignment: CrossAxisAlignment.baseline,
+            textBaseline: TextBaseline.alphabetic,
+            children: [
+              new SizedBox(
+                width: labelChildrenInset,
+                child: new Text(label, style: labelTextStyle),
+              ),
+            ]
+              ..addAll(children),
+          ),
+        );
+    var theme = Theme.of(context);
 
     final leftPadding = 16.0;
     final keylineAfterLabel = 72.0 - leftPadding;
@@ -346,7 +407,7 @@ class EventPage extends StatelessWidget {
       color: Colors.white,
       fontSize: 14.0,
       height: 1.714285714,
-      fontFamily: "League Spartan",
+      fontFamily: "GoogleSans",
       fontWeight: FontWeight.w700,
       letterSpacing: -.1,
     );
@@ -363,26 +424,6 @@ class EventPage extends StatelessWidget {
       height: 1.95,
     );
 
-    final titleWidget = new Padding(
-        padding: new EdgeInsets.only(top: 12.0, bottom: 8.0),
-        child: new Text(event.name, style: titleTextStyle));
-
-    final appBarBottom = new Padding(
-      padding: new EdgeInsets.only(left: 72.0, right: 8.0, bottom: 8.0),
-      child: new Column(
-        mainAxisSize: MainAxisSize.min,
-        children: _speakersWidgets(speakerTextStyle, event.speakers)
-          ..add(titleWidget),
-        crossAxisAlignment: CrossAxisAlignment.start,
-      ),
-    )
-    ;
-
-    final appBar = new AppBar(
-      leading: new BackButton(),
-      bottom: new FlexibleAppBarBottomWidget
-          .fromContext(context, appBarBottom),
-    );
 
 
     final rowWhen = _rowWithLabelWidget(
@@ -400,8 +441,6 @@ class EventPage extends StatelessWidget {
         keylineAfterLabel,
         [
           new Text(event.where),
-          new Text("   "),
-          new Text(event.floor, style: floorTextStyle),
         ]
     );
 
@@ -424,69 +463,55 @@ class EventPage extends StatelessWidget {
       style: descriptionTextStyle,
     );
 
-    final body = new ListView(
-      padding: new EdgeInsets.fromLTRB(leftPadding, 18.0, 24.0, 18.0),
-      children: [
-        rowWhen,
-        rowWhere,
-        rowDressCode,
-        rowAbout,
-        rowDescription,
-      ],
-    );
-
-
+    final TextStyle titleStyle = const TextStyle(
+        fontSize: 24.0, fontWeight: FontWeight.w500, fontFamily: 'LemonMilk');
     return new Scaffold(
-      key: scaffoldKey,
-      appBar: appBar,
-      body: body,
-      backgroundColor: const Color(0xFFF1F1F1),
+      body: new CustomScrollView(
+        slivers: <Widget>[
+          new SliverAppBar(
+            expandedHeight: 250.0,
+            backgroundColor: Colors.transparent,
+            flexibleSpace: new FlexibleSpaceBar(
+              //TODO: Fix hero animation
+              background: new Hero(
+                tag: event.name,
+                child: new Image.asset(
+                  event.image,
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+          ),
+          new SliverToBoxAdapter(
+            child: new Padding(
+              padding: new EdgeInsets.all(16.0),
+              child: new Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  new Text(
+                    event.name,
+                    style: titleStyle,
+                  ),
+                  new SizedBox(
+                    height: 8.0,
+                  ),
+                  rowWhen,
+                  rowWhere,
+                  rowDressCode,
+                  rowAbout,
+                  rowDescription,
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 
-  List<Widget> _speakersWidgets
-      (TextStyle speakerTextStyle, List<Speaker> speakers) {
-    final speakerNames = speakers.map((speaker) => speaker.fullName).join(", ");
-
-    final speakerNamesWidget = new Text(speakerNames, style: speakerTextStyle);
-
-    return [
-      new Row(
-          children: speakers
-              .map((speaker) =>
-          new Padding(
-            padding: new EdgeInsets.only(right: 6.0),
-            child: new CircleAvatar(
-              backgroundImage: new NetworkImage(speaker.avatarUrl),
-              radius: 20.0,
-            ),
-          )
-          )
-              .toList()),
-      new Padding(
-          padding: new EdgeInsets.only(top: 9.0), child: speakerNamesWidget),
-    ];
-  }
-
-  Widget _rowWithLabelWidget(String label,
-      TextStyle labelTextStyle,
-      double labelChildrenInset,
-      Iterable<Widget> children) =>
-      new Padding(
-        padding: new EdgeInsets.only(bottom: 32.0),
-        child: new Row(
-          crossAxisAlignment: CrossAxisAlignment.baseline,
-          textBaseline: TextBaseline.alphabetic,
-          children: [
-            new SizedBox(
-              width: labelChildrenInset,
-              child: new Text(label, style: labelTextStyle),
-            ),
-          ]
-            ..addAll(children),
-        ),
-      );
 }
+
+
 
 class EventView extends StatelessWidget {
   @override
@@ -513,6 +538,7 @@ class _EventGridPageState extends State<EventGridPage> {
     return new Theme(
       data: _kTheme.copyWith(platform: Theme.of(context).platform),
       child: new Scaffold(
+        backgroundColor: Colors.white,
         key: scaffoldKey,
         body: new CustomScrollView(
           slivers: <Widget>[
@@ -526,17 +552,16 @@ class _EventGridPageState extends State<EventGridPage> {
   Widget _buildBody(BuildContext context, double statusBarHeight) {
     final EdgeInsets mediaPadding = MediaQuery.of(context).padding;
     final EdgeInsets padding = new EdgeInsets.only(
-        top: 8.0,
+        top: 0.0,
         left: 8.0 + mediaPadding.left,
         right: 8.0 + mediaPadding.right,
-        bottom: 8.0);
+        bottom: 0.0);
     return new SliverPadding(
       padding: padding,
       sliver: new SliverGrid(
         gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
           maxCrossAxisExtent: 500.0,
           crossAxisSpacing: 8.0,
-          mainAxisSpacing: 8.0,
         ),
         delegate: new SliverChildBuilderDelegate(
           (BuildContext context, int index) {

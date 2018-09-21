@@ -4,17 +4,21 @@ import 'package:flutter/material.dart';
 import 'package:joinmun/schedule/schedule.dart';
 import 'package:joinmun/event/event.dart';
 //import 'package:joinmun/event/eventdetails.dart';
-import 'package:joinmun/catalogue/catalogue.dart';
+import 'package:joinmun/merch/merch.dart';
 import 'package:joinmun/more/more.dart';
 import 'package:joinmun/drawer.dart';
 import 'package:joinmun/explore/map.dart';
 import 'package:joinmun/page_container.dart';
 import 'package:joinmun/home/home.dart';
+import 'package:joinmun/emergency/emergency.dart';
+import 'package:joinmun/feedback/feedback.dart';
+import 'package:joinmun/layout_type.dart';
 
 
 
 
 class RootView extends StatefulWidget {
+  
   @override
   State<StatefulWidget> createState() {
     return _RootViewState();
@@ -23,6 +27,9 @@ class RootView extends StatefulWidget {
 
 
 class _RootViewState extends State<RootView> with TickerProviderStateMixin {
+  
+
+
   String _title = "";
   int _currentIndex = 0;
   List<PageContainer> _pages;
@@ -75,24 +82,26 @@ class _RootViewState extends State<RootView> with TickerProviderStateMixin {
           tickerProvider: this,
         ),
          new PageContainer(
+   
           title: "Merchandise",
           icon: new Icon(Icons.local_mall),
           hasTab: false,
-          body: () => new CatalogueView(),
+          body: () => new MerchPage(),
           tickerProvider: this,
         ),
          new PageContainer(
+      
           title: "Emergency Contacts",
           icon: new Icon(Icons.contact_phone),
           hasTab: false,
-          body: () => new EventView(),
+          body: () => new ContactsPage(),
           tickerProvider: this,
         ),
          new PageContainer(
           title: "Feedback",
           icon: new Icon(Icons.feedback),
-          hasTab: false,
-          body: () => new EventView(),
+          hasTab: true,
+          body: () => MerchPage(),
           tickerProvider: this,
         ),
       ];
@@ -152,6 +161,21 @@ class _RootViewState extends State<RootView> with TickerProviderStateMixin {
      )
    );
  }
+
+ void openFeedback(BuildContext context) {
+    Navigator.push(
+      context,
+      new MaterialPageRoute<Null>(
+        settings: const RouteSettings(name: 'feedback'),
+        builder: (BuildContext context) {
+          return new Theme(
+            data: Theme.of(context),
+            child: new RemarksPage(),
+          );
+        },
+      ),
+    );
+  }
 
 }
 

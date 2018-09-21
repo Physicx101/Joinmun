@@ -45,20 +45,15 @@ class MyDrawer extends StatelessWidget {
     return new Drawer(
       child: new Column(
         children: <Widget>[
-          new UserAccountsDrawerHeader(
-            accountName: new Text(
-              "JOINMUN 2018",
-              style: new TextStyle(fontFamily: 'LemonMilk', fontSize: 26.0, fontWeight: FontWeight.w700),
-            ),
-            decoration: new BoxDecoration(
-              image: new DecorationImage(
-                image: new AssetImage(
-                  imgHeader,
-                ),
-                fit: BoxFit.cover,
+          new Container(
+            child: new UserAccountsDrawerHeader(
+              accountName: new Text(
+                "JOINMUN 2018",
+                style: new TextStyle(fontFamily: 'LemonMilk', fontSize: 26.0, fontWeight: FontWeight.w700),
               ),
+              margin: EdgeInsets.zero,
             ),
-            margin: EdgeInsets.zero,
+            color: theme.primaryColor,
           ),
           new Expanded(
             child: new ListView(
