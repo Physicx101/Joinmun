@@ -156,7 +156,7 @@ class MerchPage extends StatelessWidget implements HasLayoutGroup {
                   alignment: Alignment.center,
                   padding: _edgeInsetsForIndex(index),
                   child: new Card(
-                    color: Theme.of(context).accentColor,
+                    color: Colors.white,
                     elevation: 0.0,
                     child: new Stack(
                       children: <Widget>[
@@ -170,7 +170,7 @@ class MerchPage extends StatelessWidget implements HasLayoutGroup {
                                   child: new Text(
                                     productPrice[index],
                                     style:
-                                        new TextStyle(fontFamily: 'LemonMilk', color: Colors.white),
+                                        new TextStyle(fontFamily: 'LemonMilk', color: Theme.of(context).accentColor),
                                   ),
                                 ),
                               ),
@@ -193,7 +193,7 @@ class MerchPage extends StatelessWidget implements HasLayoutGroup {
                                 style: new TextStyle(
                                     fontFamily: 'LemonMilk',
                                     fontSize: 14.0,
-                                    color: Colors.white),
+                                    color: Theme.of(context).accentColor),
                               ),
                             ),
                           ],

@@ -6,7 +6,7 @@ class DayOne extends StatelessWidget {
   Widget build(BuildContext context) {
     List<IconData> icon = [Icons.assignment, Icons.stars, Icons.restaurant, Icons.group];
     List<String> scheduleName = ['Registration and Check-in', 'Opening Ceremony', 'Dinner', 'Conference Zero'];
-    List<String> scheduleTime = ['12:00 - 15:00', '16:00 - 18:00', '18:00 - 20:00', '20:00 - 20:30'];
+    List<String> scheduleTime = ['13:00 - 15:00', '16:00 - 18:00', '18:00 - 19:15', '19:15 - 20:30'];
     var theme = Theme.of(context);
     return new Container(
       child: new StreamBuilder(
@@ -22,8 +22,8 @@ class DayOne extends StatelessWidget {
                 children: <Widget>[
                   new ListTile(
                     leading: new Icon(icon[index], color: theme.accentColor, size: 32.0,),
-                    title: new Text(scheduleName[index], style: new TextStyle(fontWeight: FontWeight.w600, fontSize: 18.0, fontFamily: 'CenturyGothic'),),
-                    subtitle: new Text(scheduleTime[index], style: new TextStyle(fontSize: 16.0, fontFamily: 'CenturyGothic'),),
+                    title: new Text(scheduleName[index], style: new TextStyle(fontWeight: FontWeight.w500, fontSize: 18.0, fontFamily: 'GoogleSans'),),
+                    subtitle: new Text(scheduleTime[index], style: new TextStyle(fontSize: 16.0, fontFamily: 'GoogleSans'),),
           )
         ],
       ),

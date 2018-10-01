@@ -5,7 +5,6 @@ import 'package:joinmun/schedule/schedule.dart';
 import 'package:joinmun/event/event.dart';
 //import 'package:joinmun/event/eventdetails.dart';
 import 'package:joinmun/merch/merch.dart';
-import 'package:joinmun/more/more.dart';
 import 'package:joinmun/drawer.dart';
 import 'package:joinmun/explore/map.dart';
 import 'package:joinmun/page_container.dart';
@@ -13,6 +12,8 @@ import 'package:joinmun/home/home.dart';
 import 'package:joinmun/emergency/emergency.dart';
 import 'package:joinmun/feedback/feedback.dart';
 import 'package:joinmun/layout_type.dart';
+import 'package:joinmun/explore/explore.dart';
+import 'package:joinmun/feedback/launcher.dart';
 
 
 
@@ -54,6 +55,13 @@ class _RootViewState extends State<RootView> with TickerProviderStateMixin {
           tickerProvider: this,
         ),
         new PageContainer(
+          title: "JOINTIMES",
+          icon: new Icon(Icons.import_contacts),
+          hasTab: false,
+          body: () => new ScheduleView(),
+          tickerProvider: this,
+        ),
+        new PageContainer(
           title: "Schedule",
           icon: new Icon(Icons.schedule),
           hasTab: true,
@@ -71,7 +79,7 @@ class _RootViewState extends State<RootView> with TickerProviderStateMixin {
           title: "Explore",
           icon: new Icon(Icons.explore),
           hasTab: false,
-          body: () => new ScheduleView(),
+          body: () => new ExplorePage(),
           tickerProvider: this,
         ),
          new PageContainer(
@@ -101,7 +109,7 @@ class _RootViewState extends State<RootView> with TickerProviderStateMixin {
           title: "Feedback",
           icon: new Icon(Icons.feedback),
           hasTab: true,
-          body: () => MerchPage(),
+          body: () => MyApp(),
           tickerProvider: this,
         ),
       ];
@@ -162,7 +170,7 @@ class _RootViewState extends State<RootView> with TickerProviderStateMixin {
    );
  }
 
- void openFeedback(BuildContext context) {
+ /*void openFeedback(BuildContext context) {
     Navigator.push(
       context,
       new MaterialPageRoute<Null>(
@@ -175,7 +183,7 @@ class _RootViewState extends State<RootView> with TickerProviderStateMixin {
         },
       ),
     );
-  }
+  }*/
 
 }
 

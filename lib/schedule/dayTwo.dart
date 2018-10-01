@@ -4,10 +4,11 @@ class DayTwo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<IconData> icon = [
-      Icons.supervised_user_circle,
-      Icons.restaurant,
+      Icons.assignment,
       Icons.supervised_user_circle,
       Icons.local_cafe,
+      Icons.supervised_user_circle,
+      Icons.restaurant,
       Icons.supervised_user_circle,
       Icons.local_cafe,
       Icons.supervised_user_circle,
@@ -15,10 +16,11 @@ class DayTwo extends StatelessWidget {
     ];
 
     List<String> scheduleName = [
+      'Registration',
       'Committee Session I',
-      'Friday Prayer & Lunch Break',
-      'Committee Session II',
       'Coffee Break',
+      'Committee Session II',
+      'Lunch Break & Prayer',
       'Committee Session III',
       'Coffee Break',
       'Committee Session IV',
@@ -26,13 +28,14 @@ class DayTwo extends StatelessWidget {
     ];
 
     List<String> scheduleTime = [
-      '9:00 - 11:30',
-      '11:30 - 14:00',
-      '14:00 - 16:00',
-      '16:00 - 16:30',
-      '16:30 - 18:00',
-      '18:00 - 18:30',
-      '18:30 - 19:30',
+      '07:30 - 08:15',
+      '08:30 - 10:30',
+      '10:30 - 10:40',
+      '10:45 - 11:45',
+      '11:45 - 13:50',
+      '14:00 - 15:30',
+      '15:30 - 15:45',
+      '16:00 - 17:00',
       '20:00 - 23:30'
     ];
     var theme = Theme.of(context);
@@ -57,14 +60,14 @@ class DayTwo extends StatelessWidget {
                       title: new Text(
                         scheduleName[index],
                         style: new TextStyle(
-                            fontWeight: FontWeight.w600,
+                            fontWeight: FontWeight.w500,
                             fontSize: 18.0,
-                            fontFamily: 'CenturyGothic'),
+                            fontFamily: 'GoogleSans'),
                       ),
                       subtitle: new Text(
                         scheduleTime[index],
                         style: new TextStyle(
-                            fontSize: 16.0, fontFamily: 'CenturyGothic'),
+                            fontSize: 16.0, fontFamily: 'GoogleSans'),
                       ),
                     )
                   ],

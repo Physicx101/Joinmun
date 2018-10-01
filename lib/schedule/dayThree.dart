@@ -6,6 +6,7 @@ class DayThree extends StatelessWidget {
  @override
   Widget build(BuildContext context) {
       List<IconData> icon = [
+           Icons.assignment,
         Icons.supervised_user_circle,
         Icons.local_cafe,
         Icons.supervised_user_circle,
@@ -16,6 +17,7 @@ class DayThree extends StatelessWidget {
         Icons.stars];
 
       List<String> scheduleName = [
+        'Registration',
         'Committee Session V',
         'Coffee Break',
         'Committee Session VI',
@@ -27,14 +29,15 @@ class DayThree extends StatelessWidget {
       ]  ;
 
       List<String> scheduleTime = [
-        '8:00 - 10:00',
-        '10:00 - 10:30',
-        '10:30 - 12:00',
-        '12:00 - 13:00',
-        '13:00 - 15:30',
-        '15:30 - 16:00',
-        '16:00 - 17:00',
-        '19:00 - 22:00'
+        '07:30 - 08:15',
+        '08:30 - 10:00',
+        '10:00 - 10:15',
+        '10:15 - 11:45',
+        '11:45 - 12:30',
+        '12:45 - 15:15',
+        '15:15 - 15:30',
+        '15:30 - 16:45',
+        '20:00 - 23:30'
       ];
     var theme = Theme.of(context);
     return new Container(
@@ -51,8 +54,8 @@ class DayThree extends StatelessWidget {
                 children: <Widget>[
                   new ListTile(
                     leading: new Icon(icon[index], color: theme.accentColor, size: 32.0,),
-                    title: new Text(scheduleName[index], style: new TextStyle(fontWeight: FontWeight.w600, fontSize: 18.0, fontFamily: 'CenturyGothic'),),
-                    subtitle: new Text(scheduleTime[index], style: new TextStyle(fontSize: 16.0, fontFamily: 'CenturyGothic'),),
+                    title: new Text(scheduleName[index], style: new TextStyle(fontWeight: FontWeight.w500, fontSize: 18.0, fontFamily: 'GoogleSans'),),
+                    subtitle: new Text(scheduleTime[index], style: new TextStyle(fontSize: 16.0, fontFamily: 'GoogleSans'),),
           )
         ],
       ),

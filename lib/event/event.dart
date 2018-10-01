@@ -83,8 +83,8 @@ const List<Event> kEvenLists = const <Event>[
               "http://it.droidcon.com/2017/wp-content/uploads/2015/02/sebastiano-poggi.jpg"),
     ],
     where: "Arjuna Room",
-    dressCode: "Casual",
-    image: "assets/pesto/image11.jpg",
+    dressCode: "Business Attire",
+    image: "assets/opening-ceremony.jpg",
     imagePath: "assets/pesto/",
     icon: Icons.stars,
     floor: "Ground floor",
@@ -119,12 +119,12 @@ In this day and age, the Android UI is getting more and more features. Which is 
               "http://it.droidcon.com/2017/wp-content/uploads/2015/02/sebastiano-poggi.jpg"),
     ],
     where: "Arjuna Room",
-    dressCode: "Casual",
-    image: "assets/pesto/image9.jpg",
+    dressCode: "Evening dress (female) & Black tie suit (male)",
+    image: "assets/closing-ceremony.jpg",
     imagePath: "assets/pesto/",
     icon: Icons.stars,
     floor: "Ground floor",
-    when: "Thursday, 25 October at 16:00 - 18:00",
+    when: "Saturday, 27 October at 20:00 - 23:30",
     description: """
 In this day and age, the Android UI is getting more and more features. Which is amazing. But they get layered on top of years of TODOs, less-than-clean code, and quick patches. This means the APIs are not as terse as us devs would like, and there’s plenty of unwritten knowledge to have to make things work. What if there was something that took the best bits of the Android UI model and wrapped that in a modern, sensible codebase?
 """,
@@ -155,12 +155,12 @@ In this day and age, the Android UI is getting more and more features. Which is 
               "http://it.droidcon.com/2017/wp-content/uploads/2015/02/sebastiano-poggi.jpg"),
     ],
     where: "Arjuna Room",
-    dressCode: "Casual",
-    image: "assets/pesto/image8.jpg",
+    dressCode: "Neon or white casual tops!",
+    image: "assets/social-night.jpg",
     imagePath: "assets/pesto/",
     icon: Icons.local_bar,
     floor: "Ground floor",
-    when: "Thursday, 25 October at 16:00 - 18:00",
+    when: "Friday, 26 October at 20:00 - 23:30",
     description: """
 In this day and age, the Android UI is getting more and more features. Which is amazing. But they get layered on top of years of TODOs, less-than-clean code, and quick patches. This means the APIs are not as terse as us devs would like, and there’s plenty of unwritten knowledge to have to make things work. What if there was something that took the best bits of the Android UI model and wrapped that in a modern, sensible codebase?
 """,
@@ -191,12 +191,12 @@ In this day and age, the Android UI is getting more and more features. Which is 
               "http://it.droidcon.com/2017/wp-content/uploads/2015/02/sebastiano-poggi.jpg"),
     ],
     where: "Arjuna Room",
-    dressCode: "Casual",
-    image: "assets/pesto/image7.jpg",
+    dressCode: "Comfortable, casual clothing",
+    image: "assets/cultural-trip.jpg",
     imagePath: "assets/pesto/",
     icon: Icons.directions_bus,
     floor: "Ground floor",
-    when: "Thursday, 25 October at 16:00 - 18:00",
+    when: "Sunday, 28 October at 09:00 - 12:00",
     description: """
 In this day and age, the Android UI is getting more and more features. Which is amazing. But they get layered on top of years of TODOs, less-than-clean code, and quick patches. This means the APIs are not as terse as us devs would like, and there’s plenty of unwritten knowledge to have to make things work. What if there was something that took the best bits of the Android UI model and wrapped that in a modern, sensible codebase?
 """,
@@ -241,9 +241,9 @@ class EventCardWidget extends StatelessWidget {
     final TextStyle titleStyle = const TextStyle(
         fontSize: 24.0, fontWeight: FontWeight.w500, fontFamily: 'LemonMilk');
     final TextStyle dayStyle = const TextStyle(
-        fontSize: 18.0, fontWeight: FontWeight.w500, fontFamily: 'CenturyGothic');
+        fontSize: 18.0, fontWeight: FontWeight.w500, fontFamily: 'GoogleSans');
     final TextStyle timeStyle = const TextStyle(
-    fontSize: 20.0, fontWeight: FontWeight.w500, fontFamily: 'CenturyGothic');
+    fontSize: 20.0, fontWeight: FontWeight.w500, fontFamily: 'GoogleSans');
     Image image;
 
     if (event.image != null) {
@@ -258,59 +258,55 @@ class EventCardWidget extends StatelessWidget {
       );
     }
 
-    final SafeArea card = new SafeArea(
-      top: false,
-      bottom: false,
-      child: new Container(
-        child: new Card(
-          elevation: 0.0,
-          child: new Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              // photo and title
-              new SizedBox(
-                height: 184.0,
-                child: new Stack(
-                  children: <Widget>[//TODO: fix hero animation
-                    new Positioned.fill(
-                        child: new ClipRRect(
-                          borderRadius: new BorderRadius.circular(8.0),
-                          child: new Image.asset(event.image,
-                            fit: BoxFit.cover,),
-                        )
-                    ),
-                  ],
-                ),
+    final card = new Container(
+      child: new Card(
+        elevation: 0.0,
+        child: new Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            // photo and title
+            new SizedBox(
+              height: 184.0,
+              child: new Stack(
+                children: <Widget>[//TODO: fix hero animation
+                  new Positioned.fill(
+                      child: new ClipRRect(
+                        borderRadius: new BorderRadius.circular(8.0),
+                        child: new Image.asset(event.image,
+                          fit: BoxFit.cover,),
+                      )
+                  ),
+                ],
               ),
-              new Expanded(
-                child: new Padding(
-                  padding: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0.0),
-                  child: new DefaultTextStyle(
-                    style: descriptionStyle,
-                    softWrap: false,
-                    overflow: TextOverflow.ellipsis,
-                    child: new Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        new Padding(
-                          padding: const EdgeInsets.only(bottom: 4.0),
-                          child: new Text(
-                            event.name,
-                            style: titleStyle,
-                          ),
+            ),
+            new Expanded(
+              child: new Padding(
+                padding: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0.0),
+                child: new DefaultTextStyle(
+                  style: descriptionStyle,
+                  softWrap: false,
+                  overflow: TextOverflow.ellipsis,
+                  child: new Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      new Padding(
+                        padding: const EdgeInsets.only(bottom: 4.0),
+                        child: new Text(
+                          event.name,
+                          style: titleStyle,
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(bottom: 2.0),
-                          child: new Text("Rabu, 17 Agustus 1945",  style: timeStyle.copyWith(color: Colors.black54),),
-                        ),
-                        new Text("16:00  - 18:00",  style: timeStyle.copyWith(color: Colors.black54),),
-                      ],
-                    ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 2.0),
+                        child: new Text(event.when,  style: timeStyle.copyWith(color: Colors.black54),),
+                      ),
+                      new Text("16:00  - 18:00",  style: timeStyle.copyWith(color: Colors.black54),),
+                    ],
                   ),
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
@@ -406,14 +402,13 @@ class EventDetail extends StatelessWidget {
     final speakerTextStyle = theme.textTheme.title.copyWith(
       color: Colors.white,
       fontSize: 14.0,
-      height: 1.714285714,
       fontFamily: "GoogleSans",
       fontWeight: FontWeight.w700,
       letterSpacing: -.1,
     );
 
     final labelsTextStyle = speakerTextStyle.copyWith(
-      color: theme.primaryColor,
+      color: theme.primaryColor, fontFamily: 'GoogleSans'
     );
 
     final floorTextStyle = theme.textTheme.body1.copyWith(
@@ -421,8 +416,9 @@ class EventDetail extends StatelessWidget {
     );
 
     final descriptionTextStyle = theme.textTheme.body1.copyWith(
-      height: 1.95,
+      height: 1.95, fontFamily: 'GoogleSans'
     );
+
 
 
 

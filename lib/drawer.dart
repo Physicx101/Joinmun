@@ -33,7 +33,7 @@ class MyDrawer extends StatelessWidget {
             leading: container.icon,
             title: new Text(container.title,
                 style: new TextStyle(
-                    fontFamily: 'LemonMilk', fontWeight: FontWeight.w300)),
+                    fontFamily: 'GoogleSans', fontWeight: FontWeight.w500)),
             selected: currentIndex == i,
             onTap: () {
               Navigator.of(context).pop(); // Hide drawer
