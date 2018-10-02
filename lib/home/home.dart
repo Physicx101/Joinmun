@@ -1,9 +1,6 @@
 import 'dart:ui';
-
+import 'remark.dart';
 import 'package:flutter/material.dart';
-
-
-
 
 final TextStyle titleStyle = const TextStyle(
     fontSize: 24.0, fontWeight: FontWeight.w500, fontFamily: 'LemonMilk');
@@ -18,183 +15,118 @@ final TextStyle descStyle = const TextStyle(
     color: Colors.black54,
     height: 1.95);
 
-class HomeView extends StatelessWidget {
-  Size deviceSize;
-
-  Widget _homeHeader() => Container(
-    constraints: new BoxConstraints.expand(
-      height: 200.0,
-    ),
-    decoration: new BoxDecoration(
-      image: new DecorationImage(
-        image: new AssetImage('assets/bg.jpg'),
-        fit: BoxFit.cover,
-      ),
-    ),
-    child: new BackdropFilter(
-      filter: new ImageFilter.blur(sigmaX: 4.0, sigmaY: 4.0),
-      child: new Container(
-        decoration: new BoxDecoration(color: Colors.white.withOpacity(0.5)),
-        child: new Stack(
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: new Container(
-                decoration: new BoxDecoration(
-                  image: new DecorationImage(
-                    image: new AssetImage('assets/banner.png'),
-                    fit: BoxFit.contain,
-                  ),
-                ),
-              ),
-            )
-          ],
-        ),
-      ),
-    ),
-  );
-
-  Widget _welcomingRemarks(BuildContext context) => Container(
-      child: new GestureDetector(
-        onTap: () => openRemarks(context),
-        child: new Card(
-          elevation: 0.0,
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: new Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: <Widget>[
-                new Hero(
-                    tag: 'welcome',
-                    child: new ClipRRect(
-                      borderRadius: new BorderRadius.circular(8.0),
-                      child: new Image.asset('assets/fakhri.png',
-                        height: 230.0,
-                        fit: BoxFit.cover,),
-                    )
-                ),
-                new Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: new Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: <Widget>[
-                      new SizedBox(
-                        height: 8.0,
-                      ),
-                      new Text(
-                        "Muhammad Fakhri Abdurrahman",
-                        style: nameStyle,
-                      ),
-                      const Padding(padding: const EdgeInsets.only(top: 8.0)),
-                      new Text(
-                        """A very warm welcome to all of you, delegates!                  
+const List<Remark> kRemarkLists = const <Remark>[
+  const Remark(
+      name: "Muhammad Fakhri Abdurrahman",
+      image: "assets/fakhri.png",
+      desc: """"A very warm welcome to all of you, delegates!                  
 Your presence in this year’s Jogjakarta International Model United Nations will not go waste for sure. The committee and I are excited to welcome you and give you the best experience in MUN and in Yogyakarta. All our services, including this mobile app, are specifically designed to ensure your comfort and convenience throughout the conference. This year, we will challenge all of you to delightful debates and negotiations while also providing you with the best that Yogyakarta has to offer. Make sure you enjoy the best of JOINMUN and Yogyakarta while you are here and don’t forget to have loads of fun.
 Warm Regards,
 Muhammad Fakhri Abdurrahman
 President of Jogja International Model United Nations 2018
-                  """,
-                        style: descStyle,
-                        maxLines: 3,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ));
-
-  void openRemarks(BuildContext context) {
-    Navigator.push(
-      context,
-      new MaterialPageRoute<Null>(
-        settings: const RouteSettings(name: 'remarks'),
-        builder: (BuildContext context) {
-          return new Theme(
-            data: Theme.of(context),
-            child: new RemarksPage(),
-          );
-        },
-      ),
-    );
-  }
-
-  Widget _welcomingRemarks2(BuildContext context) => Container(
-      child: new GestureDetector(
-        onTap: () => openRemarks2(context),
-        child: new Card(
-          elevation: 0.0,
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: new Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: <Widget>[
-                new Hero(
-                    tag: 'welcome2',
-                    child: new ClipRRect(
-                      borderRadius: new BorderRadius.circular(8.0),
-                      child: new Image.asset('assets/carol.jpg',
-                        height: 230.0,
-                        fit: BoxFit.cover,),
-                    )
-                ),
-                new Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: new Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: <Widget>[
-                      new SizedBox(
-                        height: 8.0,
-                      ),
-                      new Text(
-                        "Caroline Fortuna Easterlita Surya",
-                        style: nameStyle,
-                      ),
-                      const Padding(padding: const EdgeInsets.only(top: 8.0)),
-                      new Text(
-                        """Dear delegates,
+                  """),
+  const Remark(
+      name: "Caroline Fortuna Easterlita Surya",
+      image: "assets/carol.jpg",
+      desc: """Dear delegates,
 I’d like to congratulate you for taking part in JOINMUN 2018 as you have decided to surprise yourself on how much you can do with the capability that you have as an individual with great mind!
 JOINMUN 2018 represents determination of the youth to help the international community in raising awareness of the most crucial issue that we are facing nowadays. When we came up with the Grand Theme of our conference, I recognized that states have the highest authority in the global affairs, sovereignty has a big role on creating issues within our global sphere. For decades, the international community gradually tries to make the world a better place to live for mankind. Nonetheless, anarchy and violence happens at places around the globe. Hence, JOINMUN 2018 is the platform for you to help the world leaders to resolve global issues, as each of you are a part of the international community.
 
-
 Great things happen when there is a gathering of great minds. I wish you to value this gathering of great minds by enjoying our set of events. Good luck delegates!
+
 Sincerely,
 Caroline Fortuna Easterlita Surya
 Secretary-General of Jogja International Model United Nations 2018
 
-                  """,
-                        style: descStyle,
-                        maxLines: 3,
-                        overflow: TextOverflow.ellipsis,
+                  """)
+];
+
+class HomeView extends StatelessWidget {
+  Size deviceSize;
+
+  Widget _homeHeader() => Container(
+        constraints: new BoxConstraints.expand(
+          height: 200.0,
+        ),
+        decoration: new BoxDecoration(
+          image: new DecorationImage(
+            image: new AssetImage('assets/bg.jpg'),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: new BackdropFilter(
+          filter: new ImageFilter.blur(sigmaX: 4.0, sigmaY: 4.0),
+          child: new Container(
+            decoration: new BoxDecoration(color: Colors.white.withOpacity(0.5)),
+            child: new Stack(
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.all(12.0),
+                  child: new Container(
+                    decoration: new BoxDecoration(
+                      image: new DecorationImage(
+                        image: new AssetImage('assets/banner.png'),
+                        fit: BoxFit.contain,
                       ),
-                    ],
+                    ),
                   ),
-                ),
+                )
               ],
             ),
           ),
         ),
-      ));
+      );
 
-  void openRemarks2(BuildContext context) {
-    Navigator.push(
-      context,
-      new MaterialPageRoute<Null>(
-        settings: const RouteSettings(name: 'remarks'),
-        builder: (BuildContext context) {
-          return new Theme(
-            data: Theme.of(context),
-            child: new RemarksPage2(),
-          );
-        },
-      ),
+  Widget _buildSocial() {
+    return new Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20.0),
+          child: Text(
+            'Social Media',
+            style: new TextStyle(fontFamily: 'LemonMilk', fontSize: 18.0),
+          ),
+        ),
+        Card(
+            elevation: 0.0,
+            child: new Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: new Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    new SocialMediaButton(
+                      backgroundImage: "assets/ic_fb.png",
+                      size: 60.0,
+                      onPressed: () {
+                        // TODO:
+                      },
+                    ),
+                    new SocialMediaButton(
+                      backgroundImage: "assets/ic_ig.png",
+                      size: 60.0,
+                      onPressed: () {
+                        // TODO:
+                      },
+                    ),
+                    new SocialMediaButton(
+                      backgroundImage: "assets/ic_twitter.png",
+                      size: 60.0,
+                      onPressed: () {
+                        // TODO:
+                      },
+                    )
+                  ]),
+            )),
+      ],
     );
   }
 
   @override
   Widget build(BuildContext context) {
+    final EdgeInsets mediaPadding = MediaQuery.of(context).padding;
+    final EdgeInsets padding =
+        new EdgeInsets.only(top: 8.0, left: 0.0, right: 0.0, bottom: 8.0);
     final theme = Theme.of(context);
     var textTheme = Theme.of(context).textTheme;
 
@@ -203,120 +135,43 @@ Secretary-General of Jogja International Model United Nations 2018
     );
 
     return new Scaffold(
-      body: new SingleChildScrollView(
-        child: Column(
-          children: <Widget>[
-            _homeHeader(),
-            _welcomingRemarks(context),
-            _welcomingRemarks2(context),
-            new SizedBox(
-              height: 8.0,
-            ),
-            new Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                  child: Text(
-                    'Social Media',
-                    style:
-                    new TextStyle(fontFamily: 'LemonMilk', fontSize: 16.0),
-                  ),
-                ),
-                Card(
-                    elevation: 0.0,
-                    child: new Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: new Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: <Widget>[
-                            new SocialMediaButton(
-                              backgroundImage: "assets/ic_fb.png",
-                              size: 60.0,
-                              onPressed: () {
-                                // TODO:
-                              },
-                            ),
-                            new SocialMediaButton(
-                              backgroundImage: "assets/ic_ig.png",
-                              size: 60.0,
-                              onPressed: () {
-                                // TODO:
-                              },
-                            ),
-                            new SocialMediaButton(
-                              backgroundImage: "assets/ic_twitter.png",
-                              size: 60.0,
-                              onPressed: () {
-                                // TODO:
-                              },
-                            )
-                          ]),
-                    )),
-              ],
-            )
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class RemarksPage extends StatelessWidget {
-  RemarksPage();
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-
-    final descriptionTextStyle = theme.textTheme.body1.copyWith(
-      fontFamily: 'CenturyGothic',
-      height: 1.95,
-    );
-
-    return new Scaffold(
       body: new CustomScrollView(
         slivers: <Widget>[
           new SliverAppBar(
-            expandedHeight: 250.0,
-            backgroundColor: Colors.transparent,
-            flexibleSpace: new FlexibleSpaceBar(
-              background: new Hero(
-                tag: 'welcome',
-                child: new Image.asset(
-                  'assets/fakhri.png',
-                  fit: BoxFit.cover,
-                ),
+              expandedHeight: 256.0,
+              flexibleSpace: FlexibleSpaceBar(
+                background: _homeHeader(),
+              )),
+          new SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.only(top: 16.0, left: 16.0),
+              child: Text(
+                'Welcoming Remarks',
+                style: new TextStyle(fontFamily: 'LemonMilk', fontSize: 18.0),
+              ),
+            ),
+          ),
+          new SliverPadding(
+            padding: padding,
+            sliver: SliverGrid(
+              gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                maxCrossAxisExtent: 500.0,
+                crossAxisSpacing: 8.0,
+                mainAxisSpacing: 8.0,
+              ),
+              delegate: new SliverChildBuilderDelegate(
+                (BuildContext context, int index) {
+                  final Remark remark = kRemarkLists[index];
+                  return new RemarksCard(
+                    remark,
+                  );
+                },
+                childCount: kRemarkLists.length,
               ),
             ),
           ),
           new SliverToBoxAdapter(
-            child: new Padding(
-              padding: new EdgeInsets.all(16.0),
-              child: new Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  new SizedBox(
-                    height: 8.0,
-                  ),
-                  new Text(
-                    "Muhammad Fakhri Abdurrahman",
-                    style: nameStyle,
-                  ),
-                  new SizedBox(
-                    height: 8.0,
-                  ),
-                  new Text("""A very warm welcome to all of you, delegates!
-                                  
-Your presence in this year’s Jogjakarta International Model United Nations will not go waste for sure. The committee and I are excited to welcome you and give you the best experience in MUN and in Yogyakarta. All our services, including this mobile app, are specifically designed to ensure your comfort and convenience throughout the conference. This year, we will challenge all of you to delightful debates and negotiations while also providing you with the best that Yogyakarta has to offer. Make sure you enjoy the best of JOINMUN and Yogyakarta while you are here and don’t forget to have loads of fun.  
-               
-Warm Regards,
-Muhammad Fakhri Abdurrahman
-President of Jogja International Model United Nations 2018
-                    """, style: descStyle),
-                ],
-              ),
-            ),
+            child: _buildSocial(),
           ),
         ],
       ),
@@ -324,8 +179,80 @@ President of Jogja International Model United Nations 2018
   }
 }
 
-class RemarksPage2 extends StatelessWidget {
-  RemarksPage2();
+class RemarksCard extends StatelessWidget {
+  RemarksCard(this.remark);
+
+  final Remark remark;
+  @override
+  Widget build(BuildContext context) {
+    return new Container(
+        child: new GestureDetector(
+      onTap: () => openRemarksPage(context, remark),
+      child: new Card(
+        elevation: 0.0,
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: new Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              new Hero(
+                  tag: remark.image,
+                  child: new ClipRRect(
+                    borderRadius: new BorderRadius.circular(8.0),
+                    child: new Image.asset(
+                      remark.image,
+                      height: 199.0,
+                      fit: BoxFit.cover,
+                    ),
+                  )),
+              new Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: new Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: <Widget>[
+                    new SizedBox(
+                      height: 8.0,
+                    ),
+                    new Text(
+                      remark.name,
+                      style: nameStyle,
+                    ),
+                    new Text(
+                      remark.desc,
+                      style: descStyle,
+                      maxLines: 3,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    ));
+  }
+
+  void openRemarksPage(BuildContext context, Remark remark) {
+    Navigator.push(
+      context,
+      new MaterialPageRoute<Null>(
+        settings: const RouteSettings(name: 'remarks'),
+        builder: (BuildContext context) {
+          return new Theme(
+            data: Theme.of(context),
+            child: new RemarksPage(remark),
+          );
+        },
+      ),
+    );
+  }
+}
+
+class RemarksPage extends StatelessWidget {
+  RemarksPage(this.remark);
+
+  final Remark remark;
 
   @override
   Widget build(BuildContext context) {
@@ -344,9 +271,9 @@ class RemarksPage2 extends StatelessWidget {
             backgroundColor: Colors.transparent,
             flexibleSpace: new FlexibleSpaceBar(
               background: new Hero(
-                tag: 'welcome2',
+                tag: remark.image,
                 child: new Image.asset(
-                  'assets/carol.jpg',
+                  remark.image,
                   fit: BoxFit.cover,
                 ),
               ),
@@ -362,23 +289,13 @@ class RemarksPage2 extends StatelessWidget {
                     height: 8.0,
                   ),
                   new Text(
-                    "Caroline Fortuna Easterlita Surya",
+                    remark.name,
                     style: nameStyle,
                   ),
                   new SizedBox(
                     height: 8.0,
                   ),
-                  new Text("""Dear delegates,
-I’d like to congratulate you for taking part in JOINMUN 2018 as you have decided to surprise yourself on how much you can do with the capability that you have as an individual with great mind!
-JOINMUN 2018 represents determination of the youth to help the international community in raising awareness of the most crucial issue that we are facing nowadays. When we came up with the Grand Theme of our conference, I recognized that states have the highest authority in the global affairs, sovereignty has a big role on creating issues within our global sphere. For decades, the international community gradually tries to make the world a better place to live for mankind. Nonetheless, anarchy and violence happens at places around the globe. Hence, JOINMUN 2018 is the platform for you to help the world leaders to resolve global issues, as each of you are a part of the international community.
-
-
-Great things happen when there is a gathering of great minds. I wish you to value this gathering of great minds by enjoying our set of events. Good luck delegates!
-Sincerely,
-Caroline Fortuna Easterlita Surya
-Secretary-General of Jogja International Model United Nations 2018
-
-                  """, style: descStyle),
+                  new Text(remark.desc, style: descStyle),
                 ],
               ),
             ),

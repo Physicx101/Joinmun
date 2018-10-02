@@ -2,59 +2,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:joinmun/utils/flexible_app_bar_widget.dart';
+import 'package:joinmun/event/eventModel.dart';
 
-
-class Event {
-  final String name;
-  final String time;
-  final String dressCode;
-  final String image;
-  final String imagePath;
-  final IconData icon;
-  final List<Speaker> speakers;
-  final String where;
-  final String floor;
-  final String when;
-  final String description;
-  final List<RecipeIngredient> ingredients;
-  final List<RecipeStep> steps;
-
-  const Event(
-      {this.name,
-        this.time,
-      this.dressCode,
-      this.image,
-      this.imagePath,
-      this.icon,
-      this.speakers,
-      this.where,
-      this.floor,
-      this.when,
-      this.description,
-      this.ingredients,
-      this.steps});
-}
-
-class RecipeIngredient {
-  const RecipeIngredient({this.amount, this.description});
-
-  final String amount;
-  final String description;
-}
-
-class RecipeStep {
-  const RecipeStep({this.duration, this.description});
-
-  final String duration;
-  final String description;
-}
-
-class Speaker {
-  final String fullName;
-  final String avatarUrl;
-
-  const Speaker({this.fullName, this.avatarUrl});
-}
 
 const List<Event> kEvenLists = const <Event>[
   const Event(
@@ -88,6 +37,8 @@ const List<Event> kEvenLists = const <Event>[
     imagePath: "assets/pesto/",
     icon: Icons.stars,
     floor: "Ground floor",
+    date: "Thursday, 25 October",
+    time: "16:00 - 18:00",
     when: "Thursday, 25 October at 16:00 - 18:00",
     description: """
 In this day and age, the Android UI is getting more and more features. Which is amazing. But they get layered on top of years of TODOs, less-than-clean code, and quick patches. This means the APIs are not as terse as us devs would like, and there’s plenty of unwritten knowledge to have to make things work. What if there was something that took the best bits of the Android UI model and wrapped that in a modern, sensible codebase?
@@ -119,11 +70,13 @@ In this day and age, the Android UI is getting more and more features. Which is 
               "http://it.droidcon.com/2017/wp-content/uploads/2015/02/sebastiano-poggi.jpg"),
     ],
     where: "Arjuna Room",
-    dressCode: "Evening dress (female) & Black tie suit (male)",
+    dressCode: "Evening dress (F) & Black tie suit (M)",
     image: "assets/closing-ceremony.jpg",
     imagePath: "assets/pesto/",
     icon: Icons.stars,
     floor: "Ground floor",
+    date: "Saturday, 27 October",
+    time: "20:00 - 23:30",
     when: "Saturday, 27 October at 20:00 - 23:30",
     description: """
 In this day and age, the Android UI is getting more and more features. Which is amazing. But they get layered on top of years of TODOs, less-than-clean code, and quick patches. This means the APIs are not as terse as us devs would like, and there’s plenty of unwritten knowledge to have to make things work. What if there was something that took the best bits of the Android UI model and wrapped that in a modern, sensible codebase?
@@ -160,9 +113,11 @@ In this day and age, the Android UI is getting more and more features. Which is 
     imagePath: "assets/pesto/",
     icon: Icons.local_bar,
     floor: "Ground floor",
+    date: "Friday, 26 October",
+    time: "20:00 - 23:30",
     when: "Friday, 26 October at 20:00 - 23:30",
     description: """
-In this day and age, the Android UI is getting more and more features. Which is amazing. But they get layered on top of years of TODOs, less-than-clean code, and quick patches. This means the APIs are not as terse as us devs would like, and there’s plenty of unwritten knowledge to have to make things work. What if there was something that took the best bits of the Android UI model and wrapped that in a modern, sensible codebase?
+Social Night is one of the most anticipated event in JOINMUN 2018. The event will be held at Mezzanine Greenhouse with a black light theme. The delegates will enjoy engaging with one another by dancing, playing beer pong, body painting, and many more. Dress to impress and wear your glow.
 """,
   ),
   const Event(
@@ -196,9 +151,12 @@ In this day and age, the Android UI is getting more and more features. Which is 
     imagePath: "assets/pesto/",
     icon: Icons.directions_bus,
     floor: "Ground floor",
+    date: "Sunday, 28 October",
+    time: "09:00 - 12:00",
     when: "Sunday, 28 October at 09:00 - 12:00",
     description: """
-In this day and age, the Android UI is getting more and more features. Which is amazing. But they get layered on top of years of TODOs, less-than-clean code, and quick patches. This means the APIs are not as terse as us devs would like, and there’s plenty of unwritten knowledge to have to make things work. What if there was something that took the best bits of the Android UI model and wrapped that in a modern, sensible codebase?
+Cultural Trip is one of the trade mark event of JOINMUN. On October 28, we would like take you to experience Jogjakarta in its finest historical places. The delegates will have a chance to emerge themselves in the place where the history were made in Taman Sari and you'll get to watch the infamous Javanese traditional dance performance in the Sultan's Palace of Kraton Ngayogyakarta.
+
 """,
   ),
 ];
@@ -262,23 +220,18 @@ class EventCardWidget extends StatelessWidget {
       child: new Card(
         elevation: 0.0,
         child: new Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            // photo and title
-            new SizedBox(
-              height: 184.0,
-              child: new Stack(
-                children: <Widget>[//TODO: fix hero animation
-                  new Positioned.fill(
-                      child: new ClipRRect(
-                        borderRadius: new BorderRadius.circular(8.0),
-                        child: new Image.asset(event.image,
-                          fit: BoxFit.cover,),
-                      )
-                  ),
-                ],
-              ),
-            ),
+           new Hero(
+                  tag: event.image,
+                  child: new ClipRRect(
+                    borderRadius: new BorderRadius.circular(8.0),
+                    child: new Image.asset(
+                      event.image,
+                      height: 184.0,
+                      fit: BoxFit.cover,
+                    ),
+                  )),
             new Expanded(
               child: new Padding(
                 padding: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0.0),
@@ -298,9 +251,9 @@ class EventCardWidget extends StatelessWidget {
                       ),
                       Padding(
                         padding: const EdgeInsets.only(bottom: 2.0),
-                        child: new Text(event.when,  style: timeStyle.copyWith(color: Colors.black54),),
+                        child: new Text(event.date,  style: timeStyle.copyWith(color: Colors.black54),),
                       ),
-                      new Text("16:00  - 18:00",  style: timeStyle.copyWith(color: Colors.black54),),
+                      new Text(event.time,  style: timeStyle.copyWith(color: Colors.black54),),
                     ],
                   ),
                 ),
@@ -350,7 +303,7 @@ class EventDetail extends StatelessWidget {
       final speakerNames = speakers.map((speaker) => speaker.fullName).join(", ");
 
       final speakerNamesWidget = new Text(speakerNames, style: speakerTextStyle);
-
+    
       return [
         new Row(
             children: speakers
@@ -470,7 +423,7 @@ class EventDetail extends StatelessWidget {
             flexibleSpace: new FlexibleSpaceBar(
               //TODO: Fix hero animation
               background: new Hero(
-                tag: event.name,
+                tag: event.image,
                 child: new Image.asset(
                   event.image,
                   fit: BoxFit.cover,

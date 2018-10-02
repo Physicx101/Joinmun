@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 class Event {
   final String name;
   final String time;
+  final String date;
   final String dressCode;
   final String image;
   final String imagePath;
@@ -20,6 +21,7 @@ class Event {
   const Event(
       {this.name,
         this.time,
+        this.date,
       this.dressCode,
       this.image,
       this.imagePath,
