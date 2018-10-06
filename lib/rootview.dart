@@ -10,10 +10,10 @@ import 'package:joinmun/explore/map.dart';
 import 'package:joinmun/page_container.dart';
 import 'package:joinmun/home/home.dart';
 import 'package:joinmun/emergency/emergency.dart';
-import 'package:joinmun/feedback/feedback.dart';
-import 'package:joinmun/layout_type.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:joinmun/explore/explore.dart';
 import 'package:joinmun/feedback/launcher.dart';
+import 'package:joinmun/documents/documents.dart';
 
 
 
@@ -29,9 +29,7 @@ class RootView extends StatefulWidget {
 
 
 class _RootViewState extends State<RootView> with TickerProviderStateMixin {
-  
-
-
+  final String _feedbackURL = 'http://ugm.id/joinmunfeedback';
   String _title = "";
   int _currentIndex = 0;
   List<PageContainer> _pages;
@@ -77,14 +75,14 @@ class _RootViewState extends State<RootView> with TickerProviderStateMixin {
           tickerProvider: this,
         ),
          new PageContainer(
-          title: "Explore",
+          title: "Places to Visit",
           icon: new Icon(Icons.explore),
-          hasTab: false,
+          hasTab: true,
           body: () => new ExplorePage(),
           tickerProvider: this,
         ),
          new PageContainer(
-          title: "Documents",
+          title: "Delegate Handbook & ROP",
           icon: new Icon(Icons.book),
           hasTab: false,
           body: () => new ScheduleView(),
@@ -99,7 +97,6 @@ class _RootViewState extends State<RootView> with TickerProviderStateMixin {
           tickerProvider: this,
         ),
          new PageContainer(
-      
           title: "Emergency Contacts",
           icon: new Icon(Icons.contact_phone),
           hasTab: false,

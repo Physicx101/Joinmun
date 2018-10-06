@@ -50,29 +50,31 @@ class MerchHeader implements SliverPersistentHeaderDelegate {
               Text(
                 'Get these merch at:',
                 style: TextStyle(
-                    fontSize: 20.0, color: Colors.white, fontFamily: 'GoogleSans'),
+                    fontSize: 20.0,
+                    color: Colors.white,
+                    fontFamily: 'GoogleSans'),
               ),
               SocialMediaButton(
-              backgroundImage: "assets/ic_fb_white.png",
-              size: 32.0,
-              onPressed: () {
-                // TODO:
-              },
-            ),
-            SocialMediaButton(
-              backgroundImage: "assets/ic_ig_white.png",
-              size: 32.0,
-              onPressed: () {
-                // TODO:
-              },
-            ),
-            SocialMediaButton(
-              backgroundImage: "assets/ic_twitter_white.png",
-              size: 32.0,
-              onPressed: () {
-                // TODO:
-              },
-            ),
+                backgroundImage: "assets/ic_fb_white.png",
+                size: 32.0,
+                onPressed: () {
+                  // TODO:
+                },
+              ),
+              SocialMediaButton(
+                backgroundImage: "assets/ic_ig_white.png",
+                size: 32.0,
+                onPressed: () {
+                  // TODO:
+                },
+              ),
+              SocialMediaButton(
+                backgroundImage: "assets/ic_twitter_white.png",
+                size: 32.0,
+                onPressed: () {
+                  // TODO:
+                },
+              ),
             ],
           ),
         ),
@@ -125,10 +127,13 @@ class MerchPage extends StatelessWidget implements HasLayoutGroup {
   Widget build(BuildContext context) {
     return Scaffold(
       body: _scrollView(context),
+      backgroundColor: Theme.of(context).primaryColor,
     );
   }
 
   Widget _scrollView(BuildContext context) {
+    final EdgeInsets mediaPadding = MediaQuery.of(context).padding;
+    double height = MediaQuery.of(context).size.height;
     // Use LayoutBuilder to get the hero header size while keeping the image aspect-ratio
     return Container(
       child: CustomScrollView(
@@ -143,24 +148,24 @@ class MerchPage extends StatelessWidget implements HasLayoutGroup {
             ),
           ),
           SliverGrid(
-            gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-              maxCrossAxisExtent: 200.0,
-              mainAxisSpacing: 0.0,
-              crossAxisSpacing: 0.0,
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              mainAxisSpacing: 2.0,
+              crossAxisSpacing: 2.0,
               childAspectRatio: 0.75,
             ),
             delegate: SliverChildBuilderDelegate(
               (BuildContext context, int index) {
                 return Container(
-                  color: Theme.of(context).primaryColor,
                   alignment: Alignment.center,
-                  padding: _edgeInsetsForIndex(index),
+                  padding: const EdgeInsets.all(8.0),
                   child: new Card(
                     color: Colors.white,
                     elevation: 0.0,
                     child: new Stack(
                       children: <Widget>[
                         new Column(
+                          mainAxisSize: MainAxisSize.min,
                           children: <Widget>[
                             new Align(
                               alignment: Alignment.centerRight,
@@ -169,25 +174,21 @@ class MerchPage extends StatelessWidget implements HasLayoutGroup {
                                   padding: const EdgeInsets.all(8.0),
                                   child: new Text(
                                     productPrice[index],
-                                    style:
-                                        new TextStyle(fontFamily: 'LemonMilk', color: Theme.of(context).accentColor),
+                                    style: new TextStyle(
+                                        fontFamily: 'LemonMilk',
+                                        fontSize: 14.0,
+                                        color: Theme.of(context).accentColor),
                                   ),
                                 ),
                               ),
                             ),
-                            new Container(
-                              width: 144.0,
-                              height: 144.0,
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 8.0),
-                              child: new Image.asset(
-                                assetNames[index],
-                                fit: BoxFit.contain,
-                              ),
+                            new Image.asset(
+                              assetNames[index],
+                              fit: BoxFit.contain,
+                              height: 150.0,
                             ),
                             new Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 8.0),
+                              padding: mediaPadding,
                               child: new Text(
                                 productNames[index],
                                 style: new TextStyle(
@@ -196,6 +197,9 @@ class MerchPage extends StatelessWidget implements HasLayoutGroup {
                                     color: Theme.of(context).accentColor),
                               ),
                             ),
+                            new SizedBox(
+                              height: 8.0
+                            )
                           ],
                         ),
                       ],

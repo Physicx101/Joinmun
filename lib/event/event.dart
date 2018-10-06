@@ -228,7 +228,7 @@ class EventCardWidget extends StatelessWidget {
                     borderRadius: new BorderRadius.circular(8.0),
                     child: new Image.asset(
                       event.image,
-                      height: 184.0,
+                      height: 188.0,
                       fit: BoxFit.cover,
                     ),
                   )),
@@ -240,6 +240,7 @@ class EventCardWidget extends StatelessWidget {
                   softWrap: false,
                   overflow: TextOverflow.ellipsis,
                   child: new Column(
+                    mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       new Padding(
@@ -369,7 +370,7 @@ class EventDetail extends StatelessWidget {
     );
 
     final descriptionTextStyle = theme.textTheme.body1.copyWith(
-      height: 1.95, fontFamily: 'GoogleSans'
+      height: 1.5, fontFamily: 'GoogleSans', color: Colors.black54
     );
 
 
@@ -380,7 +381,7 @@ class EventDetail extends StatelessWidget {
         labelsTextStyle,
         keylineAfterLabel,
         [
-          new Text(event.when),
+          new Text(event.when, style: descriptionTextStyle,),
         ]
     );
 
@@ -389,7 +390,7 @@ class EventDetail extends StatelessWidget {
         labelsTextStyle,
         keylineAfterLabel,
         [
-          new Text(event.where),
+          new Text(event.where, style: descriptionTextStyle),
         ]
     );
 
@@ -398,7 +399,7 @@ class EventDetail extends StatelessWidget {
         labelsTextStyle,
         keylineAfterLabel,
         [
-          new Text(event.dressCode),
+          new Text(event.dressCode, style: descriptionTextStyle)
         ]
     );
 
@@ -510,7 +511,6 @@ class _EventGridPageState extends State<EventGridPage> {
       sliver: new SliverGrid(
         gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
           maxCrossAxisExtent: 500.0,
-          crossAxisSpacing: 8.0,
         ),
         delegate: new SliverChildBuilderDelegate(
           (BuildContext context, int index) {

@@ -1,5 +1,4 @@
 import 'dart:ui';
-import 'remark.dart';
 import 'package:flutter/material.dart';
 
 final TextStyle titleStyle = const TextStyle(
@@ -9,18 +8,32 @@ final TextStyle nameStyle = const TextStyle(
     fontWeight: FontWeight.w700, fontSize: 18.0, fontFamily: 'GoogleSans');
 
 final TextStyle descStyle = const TextStyle(
-    fontSize: 14.0,
-    fontFamily: 'GoogleSans',
-    fontWeight: FontWeight.w500,
-    color: Colors.black54,
-    height: 1.95);
+  fontSize: 14.0,
+  fontFamily: 'GoogleSans',
+  fontWeight: FontWeight.w500,
+  color: Colors.black54,
+  height: 1.5
+);
+
+class Remark {
+  final String name;
+  final String image;
+  final String desc;
+  final String shortDesc;
+
+  const Remark({this.name, this.image, this.desc, this.shortDesc});
+}
 
 const List<Remark> kRemarkLists = const <Remark>[
   const Remark(
       name: "Muhammad Fakhri Abdurrahman",
       image: "assets/fakhri.png",
-      desc: """"A very warm welcome to all of you, delegates!                  
+      shortDesc:
+          'A very warm welcome to all of you, delegates! Your presence in this year’s Jogjakarta International Model United Nations will not go waste for sure. The committee and I are excited to welcome you and give you the best experience in MUN and in Yogyakarta. All our services, including this mobile app, are specifically designed to ensure your comfort and convenience throughout the conference. This year, we will challenge all of you to delightful debates and negotiations while also providing you with the best that Yogyakarta has to offer. Make sure you enjoy the best of JOINMUN and Yogyakarta while you are here and don’t forget to have loads of fun.',
+      desc: """A very warm welcome to all of you, delegates!
+
 Your presence in this year’s Jogjakarta International Model United Nations will not go waste for sure. The committee and I are excited to welcome you and give you the best experience in MUN and in Yogyakarta. All our services, including this mobile app, are specifically designed to ensure your comfort and convenience throughout the conference. This year, we will challenge all of you to delightful debates and negotiations while also providing you with the best that Yogyakarta has to offer. Make sure you enjoy the best of JOINMUN and Yogyakarta while you are here and don’t forget to have loads of fun.
+
 Warm Regards,
 Muhammad Fakhri Abdurrahman
 President of Jogja International Model United Nations 2018
@@ -28,6 +41,8 @@ President of Jogja International Model United Nations 2018
   const Remark(
       name: "Caroline Fortuna Easterlita Surya",
       image: "assets/carol.jpg",
+      shortDesc:
+          'Dear delegates, I’d like to congratulate you for taking part in JOINMUN 2018 as you have decided to surprise yourself on how much you can do with the capability that you have as an individual with great mind! JOINMUN 2018 represents determination of the youth to',
       desc: """Dear delegates,
 I’d like to congratulate you for taking part in JOINMUN 2018 as you have decided to surprise yourself on how much you can do with the capability that you have as an individual with great mind!
 JOINMUN 2018 represents determination of the youth to help the international community in raising awareness of the most crucial issue that we are facing nowadays. When we came up with the Grand Theme of our conference, I recognized that states have the highest authority in the global affairs, sovereignty has a big role on creating issues within our global sphere. For decades, the international community gradually tries to make the world a better place to live for mankind. Nonetheless, anarchy and violence happens at places around the globe. Hence, JOINMUN 2018 is the platform for you to help the world leaders to resolve global issues, as each of you are a part of the international community.
@@ -97,21 +112,21 @@ class HomeView extends StatelessWidget {
                   children: <Widget>[
                     new SocialMediaButton(
                       backgroundImage: "assets/ic_fb.png",
-                      size: 60.0,
+                      size: 36.0,
                       onPressed: () {
                         // TODO:
                       },
                     ),
                     new SocialMediaButton(
                       backgroundImage: "assets/ic_ig.png",
-                      size: 60.0,
+                      size: 36.0,
                       onPressed: () {
                         // TODO:
                       },
                     ),
                     new SocialMediaButton(
                       backgroundImage: "assets/ic_twitter.png",
-                      size: 60.0,
+                      size: 36.0,
                       onPressed: () {
                         // TODO:
                       },
@@ -135,10 +150,11 @@ class HomeView extends StatelessWidget {
     );
 
     return new Scaffold(
+      backgroundColor: Colors.white,
       body: new CustomScrollView(
         slivers: <Widget>[
           new SliverAppBar(
-              expandedHeight: 256.0,
+              expandedHeight: 220.0,
               flexibleSpace: FlexibleSpaceBar(
                 background: _homeHeader(),
               )),
@@ -152,12 +168,10 @@ class HomeView extends StatelessWidget {
             ),
           ),
           new SliverPadding(
-            padding: padding,
+            padding: mediaPadding,
             sliver: SliverGrid(
               gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
                 maxCrossAxisExtent: 500.0,
-                crossAxisSpacing: 8.0,
-                mainAxisSpacing: 8.0,
               ),
               delegate: new SliverChildBuilderDelegate(
                 (BuildContext context, int index) {
@@ -185,52 +199,54 @@ class RemarksCard extends StatelessWidget {
   final Remark remark;
   @override
   Widget build(BuildContext context) {
-    return new Container(
-        child: new GestureDetector(
+    final EdgeInsets mediaPadding = MediaQuery.of(context).padding;
+    return new GestureDetector(
       onTap: () => openRemarksPage(context, remark),
-      child: new Card(
-        elevation: 0.0,
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: new Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              new Hero(
-                  tag: remark.image,
-                  child: new ClipRRect(
-                    borderRadius: new BorderRadius.circular(8.0),
-                    child: new Image.asset(
-                      remark.image,
-                      height: 199.0,
-                      fit: BoxFit.cover,
-                    ),
-                  )),
-              new Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: new Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: <Widget>[
-                    new SizedBox(
-                      height: 8.0,
-                    ),
-                    new Text(
-                      remark.name,
-                      style: nameStyle,
-                    ),
-                    new Text(
-                      remark.desc,
-                      style: descStyle,
-                      maxLines: 3,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                  ],
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 8.0),
+        child: new Card(
+          elevation: 0.0,
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: new Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                new Hero(
+                    tag: remark.image,
+                    child: new ClipRRect(
+                      borderRadius: new BorderRadius.circular(8.0),
+                      child: new Image.asset(
+                        remark.image,
+                        height: 188.0,
+                        fit: BoxFit.cover,
+                      ),
+                    )),
+                new SizedBox(height: 8.0),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: new Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      new Text(
+                        remark.name,
+                        style: nameStyle,
+                      ),
+                      new Text(
+                        remark.shortDesc,
+                        style: descStyle,
+                        maxLines: 3,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
-    ));
+    );
   }
 
   void openRemarksPage(BuildContext context, Remark remark) {

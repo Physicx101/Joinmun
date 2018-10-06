@@ -7,12 +7,11 @@ class PageContainer {
     this.hasTab,
     this.body,
     TickerProvider tickerProvider,
-  })
-      : controller = new AnimationController(
-        duration: kThemeAnimationDuration,
-        vsync: tickerProvider,
+  }) : controller = new AnimationController(
+          duration: kThemeAnimationDuration,
+          vsync: tickerProvider,
         ) {
-      _animation = new CurvedAnimation(
+    _animation = new CurvedAnimation(
       parent: controller,
       curve: const Interval(0.5, 1.0, curve: Curves.fastOutSlowIn),
     );

@@ -40,7 +40,7 @@ class _ContactsListState extends State<ContactsList> {
   @override
   Widget build(BuildContext context) {
     final TextStyle titleStyle = const TextStyle(
-        fontSize: 20.0, fontWeight: FontWeight.w500, fontFamily: 'GoogleSans');
+        fontSize: 16.0, fontWeight: FontWeight.w500, fontFamily: 'GoogleSans');
 
     return Scaffold(
         body: ListView(children: <Widget>[
@@ -154,6 +154,7 @@ class _ContactsListState extends State<ContactsList> {
             ListTile(
               title: Text('Vetri'),
               subtitle: Text('+62274563551'),
+              trailing: Icon(Icons.call),
               onTap: () => setState(() {
                     _launched = _launchCaller('+62274563551');
                   }),
