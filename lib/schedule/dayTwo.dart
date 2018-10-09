@@ -62,12 +62,12 @@ class DayTwo extends StatelessWidget {
                         style: new TextStyle(
                             fontWeight: FontWeight.w500,
                             fontSize: 18.0,
-                            fontFamily: 'GoogleSans'),
+                            fontFamily: 'Montserrat'),
                       ),
                       subtitle: new Text(
                         scheduleTime[index],
                         style: new TextStyle(
-                            fontSize: 16.0, fontFamily: 'GoogleSans'),
+                            fontSize: 16.0, fontFamily: 'Montserrat'),
                       ),
                     )
                   ],

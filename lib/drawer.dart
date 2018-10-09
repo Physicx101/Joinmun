@@ -29,45 +29,52 @@ class MyDrawer extends StatelessWidget {
     for (int i = 0; i < items.length; i++) {
       PageContainer container = items[i];
       lists.add(
-        new ListTile(
-            leading: container.icon,
-            title: new Text(container.title,
-                style: new TextStyle(
-                    fontFamily: 'GoogleSans', fontWeight: FontWeight.w500)),
-            selected: currentIndex == i,
-            onTap: () {
-              Navigator.of(context).pop(); // Hide drawer
-              if (onTap != null) onTap(i);
-            }),
+        ListTileTheme(
+          textColor: Colors.white,
+          selectedColor: theme.accentColor,
+          child: new ListTile(
+              //leading: container.icon,
+              title: Center(
+                child: new Text(
+                  container.title,
+                  style: TextStyle(
+                    fontFamily: 'Montserrat',
+                    fontWeight: FontWeight.w500,
+                    letterSpacing: 1.0,
+                    fontSize: 16.0,
+                  ),
+                ),
+              ),
+              selected: currentIndex == i,
+              onTap: () {
+                Navigator.of(context).pop(); // Hide drawer
+                if (onTap != null) onTap(i);
+              }),
+        ),
       );
     }
 
     return new Drawer(
-      child: new Column(
-        children: <Widget>[
-          new Container(
-            child: new UserAccountsDrawerHeader(
-              accountName: new Text(
-                "JOINMUN 2018",
-                style: new TextStyle(fontFamily: 'LemonMilk', fontSize: 26.0, fontWeight: FontWeight.w700),
+      child: Container(
+        color: theme.primaryColor,
+        child: new Column(
+          children: <Widget>[
+            new Container(
+              height: 100.0,
+            ),
+            new Expanded(
+              child: new ListView(
+                children: <Widget>[
+                  new Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: lists,
+                  ),
+                ],
               ),
-              margin: EdgeInsets.zero,
             ),
-            color: theme.primaryColor,
-          ),
-          new Expanded(
-            child: new ListView(
-              padding: const EdgeInsets.only(top: 8.0),
-              children: <Widget>[
-                new Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: lists,
-                ),
-              ],
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

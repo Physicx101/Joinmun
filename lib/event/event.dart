@@ -2,7 +2,62 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:joinmun/utils/flexible_app_bar_widget.dart';
-import 'package:joinmun/event/eventModel.dart';
+
+
+class Event {
+  final String name;
+  final String time;
+  final String date;
+  final String dressCode;
+  final String image;
+  final String imagePath;
+  final IconData icon;
+  final List<Speaker> speakers;
+  final String where;
+  final String floor;
+  final String when;
+  final String description;
+  final List<RecipeIngredient> ingredients;
+  final List<RecipeStep> steps;
+
+  const Event(
+      {this.name,
+        this.time,
+        this.date,
+      this.dressCode,
+      this.image,
+      this.imagePath,
+      this.icon,
+      this.speakers,
+      this.where,
+      this.floor,
+      this.when,
+      this.description,
+      this.ingredients,
+      this.steps});
+}
+
+class RecipeIngredient {
+  const RecipeIngredient({this.amount, this.description});
+
+  final String amount;
+  final String description;
+}
+
+class RecipeStep {
+  const RecipeStep({this.duration, this.description});
+
+  final String duration;
+  final String description;
+}
+
+class Speaker {
+  final String fullName;
+  final String avatarUrl;
+
+  const Speaker({this.fullName, this.avatarUrl});
+}
+
 
 
 const List<Event> kEvenLists = const <Event>[
@@ -72,6 +127,44 @@ In this day and age, the Android UI is getting more and more features. Which is 
     where: "Arjuna Room",
     dressCode: "Evening dress (F) & Black tie suit (M)",
     image: "assets/closing-ceremony.jpg",
+    imagePath: "assets/pesto/",
+    icon: Icons.stars,
+    floor: "Ground floor",
+    date: "Saturday, 27 October",
+    time: "20:00 - 23:30",
+    when: "Saturday, 27 October at 20:00 - 23:30",
+    description: """
+Committee Session is the main event of JOINMUN 2018. There will be 6 councils (UNGA, UNHRC, UNFCCC, UNSC, G20, PCA) + Press Committee. For 2 days straight (insert date), the delegate's skills in speech, diplomacy, and research will be put to the test by having discussions about their respective councils topic.
+""",
+  ),
+  const Event(
+    name: "Committee Session",
+    ingredients: const <RecipeIngredient>[
+      const RecipeIngredient(
+          amount: '6 pieces', description: 'Mozzarella cheese'),
+      const RecipeIngredient(amount: '6 pieces', description: 'Toasts'),
+      const RecipeIngredient(amount: '⅔ cup', description: 'Homemade pesto'),
+      const RecipeIngredient(
+          amount: '1tbsp', description: 'Freshly ground pepper'),
+      const RecipeIngredient(amount: '1 tsp', description: 'Salt'),
+    ],
+    steps: const <RecipeStep>[
+      const RecipeStep(description: 'Put in oven'),
+      const RecipeStep(duration: '45 min', description: 'Cook'),
+    ],
+    speakers: const <Speaker>[
+      const Speaker(
+          fullName: "Eugenio Marletti",
+          avatarUrl:
+              "http://it.droidcon.com/2017/wp-content/uploads/2015/02/3f952ce.jpg"),
+      const Speaker(
+          fullName: "Sebastiano Poggi",
+          avatarUrl:
+              "http://it.droidcon.com/2017/wp-content/uploads/2015/02/sebastiano-poggi.jpg"),
+    ],
+    where: "Arjuna Room",
+    dressCode: "Evening dress (F) & Black tie suit (M)",
+    image: "assets/committee.jpg",
     imagePath: "assets/pesto/",
     icon: Icons.stars,
     floor: "Ground floor",
@@ -177,7 +270,7 @@ class EventStyle extends TextStyle {
   }) : super(
           inherit: false,
           color: color,
-          fontFamily: 'GoogleSans',
+          fontFamily: 'Montserrat',
           fontSize: fontSize,
           fontWeight: fontWeight,
           textBaseline: TextBaseline.alphabetic,
@@ -199,9 +292,9 @@ class EventCardWidget extends StatelessWidget {
     final TextStyle titleStyle = const TextStyle(
         fontSize: 24.0, fontWeight: FontWeight.w500, fontFamily: 'LemonMilk');
     final TextStyle dayStyle = const TextStyle(
-        fontSize: 18.0, fontWeight: FontWeight.w500, fontFamily: 'GoogleSans');
+        fontSize: 18.0, fontWeight: FontWeight.w500, fontFamily: 'Montserrat');
     final TextStyle timeStyle = const TextStyle(
-    fontSize: 20.0, fontWeight: FontWeight.w500, fontFamily: 'GoogleSans');
+    fontSize: 20.0, fontWeight: FontWeight.w500, fontFamily: 'Montserrat');
     Image image;
 
     if (event.image != null) {
@@ -346,23 +439,18 @@ class EventDetail extends StatelessWidget {
     final leftPadding = 16.0;
     final keylineAfterLabel = 72.0 - leftPadding;
 
-    final titleTextStyle = theme.textTheme.display1.copyWith(
-      color: Colors.white,
-      fontSize: 24.0,
-      fontFamily: "League Spartan",
-      fontWeight: FontWeight.w700,
-    );
+  
 
     final speakerTextStyle = theme.textTheme.title.copyWith(
       color: Colors.white,
       fontSize: 14.0,
-      fontFamily: "GoogleSans",
+      fontFamily: "Montserrat",
       fontWeight: FontWeight.w700,
       letterSpacing: -.1,
     );
 
     final labelsTextStyle = speakerTextStyle.copyWith(
-      color: theme.primaryColor, fontFamily: 'GoogleSans'
+      color: theme.primaryColor, fontFamily: 'Montserrat'
     );
 
     final floorTextStyle = theme.textTheme.body1.copyWith(
@@ -370,7 +458,7 @@ class EventDetail extends StatelessWidget {
     );
 
     final descriptionTextStyle = theme.textTheme.body1.copyWith(
-      height: 1.5, fontFamily: 'GoogleSans', color: Colors.black54
+      height: 1.5, fontFamily: 'Montserrat', color: Colors.black54
     );
 
 
@@ -508,10 +596,8 @@ class _EventGridPageState extends State<EventGridPage> {
         bottom: 0.0);
     return new SliverPadding(
       padding: padding,
-      sliver: new SliverGrid(
-        gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-          maxCrossAxisExtent: 500.0,
-        ),
+      sliver: new SliverFixedExtentList(
+        itemExtent: 320.0,
         delegate: new SliverChildBuilderDelegate(
           (BuildContext context, int index) {
             final Event event = widget.events[index];

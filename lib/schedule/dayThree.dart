@@ -54,8 +54,8 @@ class DayThree extends StatelessWidget {
                 children: <Widget>[
                   new ListTile(
                     leading: new Icon(icon[index], color: theme.accentColor, size: 32.0,),
-                    title: new Text(scheduleName[index], style: new TextStyle(fontWeight: FontWeight.w500, fontSize: 18.0, fontFamily: 'GoogleSans'),),
-                    subtitle: new Text(scheduleTime[index], style: new TextStyle(fontSize: 16.0, fontFamily: 'GoogleSans'),),
+                    title: new Text(scheduleName[index], style: new TextStyle(fontWeight: FontWeight.w500, fontSize: 18.0, fontFamily: 'Montserrat'),),
+                    subtitle: new Text(scheduleTime[index], style: new TextStyle(fontSize: 16.0, fontFamily: 'Montserrat'),),
           )
         ],
       ),

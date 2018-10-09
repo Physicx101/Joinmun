@@ -5,6 +5,7 @@ class PageContainer {
     this.title,
     this.icon,
     this.hasTab,
+    this.isExternal,
     this.body,
     TickerProvider tickerProvider,
   }) : controller = new AnimationController(
@@ -19,6 +20,7 @@ class PageContainer {
 
   final String title;
   final Widget icon;
+  final bool isExternal;
   final bool hasTab;
   final ValueGetter<Widget> body;
   final AnimationController controller;

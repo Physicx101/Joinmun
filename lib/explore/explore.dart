@@ -71,12 +71,13 @@ class _ExplorePageState extends State<ExplorePage>
           color: theme.primaryColor,
           elevation: 4.0,
           child: new TabBar(
+            labelStyle: new TextStyle(fontFamily: 'Montserrat'),
             isScrollable: true,
             labelColor: theme.accentColor,
             unselectedLabelColor: Colors.grey,
             controller: controller,
             tabs: <Widget>[
-              new Tab(text: "Art & Museum"),
+              new Tab(child: new Tab(text: "Art & Museum")),
               new Tab(text: "Landmarks"),
               new Tab(text: "Nature"),
               new Tab(text: "Culinary"),
@@ -120,7 +121,6 @@ class _ExplorePageState extends State<ExplorePage>
       itemCount: listPlaces.length,
       itemBuilder: (BuildContext context, int index) {
         Place place = listPlaces[index];
-
         return new PlaceCard(place);
       },
     );
@@ -286,7 +286,7 @@ class PlacePage extends StatelessWidget {
 }
 
 final TextStyle descStyle =
-    const TextStyle(fontWeight: FontWeight.w500, color: Colors.black54, fontFamily: 'GoogleSans');
+    const TextStyle(fontWeight: FontWeight.w500, color: Colors.black54, fontFamily: 'Montserrat');
     final TextStyle titleStyle =
     const TextStyle(fontSize: 20.0, fontWeight: FontWeight.w600, fontFamily: 'LemonMilk');
 

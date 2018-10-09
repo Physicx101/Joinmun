@@ -40,7 +40,7 @@ class _ContactsListState extends State<ContactsList> {
   @override
   Widget build(BuildContext context) {
     final TextStyle titleStyle = const TextStyle(
-        fontSize: 16.0, fontWeight: FontWeight.w500, fontFamily: 'GoogleSans');
+        fontSize: 16.0, fontWeight: FontWeight.w500, fontFamily: 'Montserrat');
 
     return Scaffold(
         body: ListView(children: <Widget>[

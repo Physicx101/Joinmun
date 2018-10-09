@@ -36,6 +36,8 @@ flutter:
 
 
   assets:
+    - assets/avatar_placeholder.png
+    - assets/committee.jpg
     - assets/social-night.jpg
     - assets/opening-ceremony.jpg
     - assets/closing-ceremony.jpg
@@ -66,29 +68,7 @@ flutter:
     - assets/ic_googlemap.png
     - assets/nothing_here.png
     - assets/img_drawer_header.png
-    - assets/pesto/avatar.jpg
-    - assets/pesto/image10.jpg
-    - assets/pesto/image11.jpg
-    - assets/pesto/image12.jpg
-    - assets/pesto/image13.jpg
-    - assets/pesto/image1.jpg
-    - assets/pesto/image2.jpg
-    - assets/pesto/image3.jpg
-    - assets/pesto/image4.jpg
-    - assets/pesto/image5.jpg
-    - assets/pesto/image6.jpg
-    - assets/pesto/image7.jpg
-    - assets/pesto/image8.jpg
-    - assets/pesto/image9.jpg
-    - assets/pesto/logo_small.png
-    - assets/pesto/logo_medium.png
-    - assets/pesto/fish.png
-    - assets/pesto/healthy.png
-    - assets/pesto/main.png
-    - assets/pesto/meat.png
-    - assets/pesto/quick.png
-    - assets/pesto/spicy.png
-    - assets/pesto/veggie.png
+    
 
 
   fonts:
@@ -108,31 +88,20 @@ flutter:
       fonts:
         - asset: fonts/LeagueSpartan-Bold.otf
           weight: 700
-    - family: Quicksand
+    - family: Montserrat
       fonts:
-        - asset: fonts/Quicksand-Light.ttf
-          weight: 300
-        - asset: fonts/Quicksand-Regular.ttf
-          weight: 400
-        - asset: fonts/Quicksand-Medium.ttf
-          weight: 500
-        - asset: fonts/Quicksand-Bold.ttf
-          weight: 700
-    - family: GoogleSans
-      fonts:
-        - asset: fonts/GoogleSans-BoldItalic.ttf
+        - asset: fonts/Montserrat-BoldItalic.ttf
           weight: 700
           style: italic
-        - asset: fonts/GoogleSans-Bold.ttf
+        - asset: fonts/Montserrat-Bold.ttf
           weight: 700
-        - asset: fonts/GoogleSans-Italic.ttf
+        - asset: fonts/Montserrat-Italic.ttf
           weight: 400
           style: italic
-        - asset: fonts/GoogleSans-MediumItalic.ttf
+        - asset: fonts/Montserrat-MediumItalic.ttf
           weight: 500
           style: italic
-        - asset: fonts/GoogleSans-Medium.ttf
+        - asset: fonts/Montserrat-Medium.ttf
           weight: 500
-        - asset: fonts/GoogleSans-Regular.ttf
+        - asset: fonts/Montserrat-Regular.ttf
           weight: 400
-       

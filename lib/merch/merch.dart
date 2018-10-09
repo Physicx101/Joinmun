@@ -52,7 +52,7 @@ class MerchHeader implements SliverPersistentHeaderDelegate {
                 style: TextStyle(
                     fontSize: 20.0,
                     color: Colors.white,
-                    fontFamily: 'GoogleSans'),
+                    fontFamily: 'Montserrat'),
               ),
               SocialMediaButton(
                 backgroundImage: "assets/ic_fb_white.png",

@@ -36,6 +36,7 @@ class _ScheduleViewState extends State<ScheduleView> with SingleTickerProviderSt
           color: theme.primaryColor,
           elevation: 4.0,
           child: new TabBar(
+            labelStyle: TextStyle(fontFamily: 'Montserrat'),
             labelColor: theme.accentColor,
             unselectedLabelColor: Colors.grey,
             controller: controller,

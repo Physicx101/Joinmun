@@ -30,6 +30,7 @@ class JoinmunFlutterApp extends StatelessWidget {
         
 
     return new MaterialApp(
+      debugShowCheckedModeBanner: false,
         theme: _buildTheme(),
         title: 'JOINMUN 2018',
         home: new RootView(),

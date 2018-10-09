@@ -1,19 +1,20 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'dart:async';
 
 final TextStyle titleStyle = const TextStyle(
     fontSize: 24.0, fontWeight: FontWeight.w500, fontFamily: 'LemonMilk');
 
 final TextStyle nameStyle = const TextStyle(
-    fontWeight: FontWeight.w700, fontSize: 18.0, fontFamily: 'GoogleSans');
+    fontWeight: FontWeight.w700, fontSize: 18.0, fontFamily: 'Montserrat');
 
 final TextStyle descStyle = const TextStyle(
-  fontSize: 14.0,
-  fontFamily: 'GoogleSans',
-  fontWeight: FontWeight.w500,
-  color: Colors.black54,
-  height: 1.5
-);
+    fontSize: 14.0,
+    fontFamily: 'Montserrat',
+    fontWeight: FontWeight.w500,
+    color: Colors.black54,
+    height: 1.5);
 
 class Remark {
   final String name;
@@ -56,8 +57,24 @@ Secretary-General of Jogja International Model United Nations 2018
                   """)
 ];
 
-class HomeView extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  HomePage({Key key}) : super(key: key);
   Size deviceSize;
+
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  Future<Null> _launched;
+
+  Future<Null> _launchInBrowser(String url) async {
+    if (await canLaunch(url)) {
+      await launch(url, forceSafariVC: false, forceWebView: false);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
 
   Widget _homeHeader() => Container(
         constraints: new BoxConstraints.expand(
@@ -112,24 +129,27 @@ class HomeView extends StatelessWidget {
                   children: <Widget>[
                     new SocialMediaButton(
                       backgroundImage: "assets/ic_fb.png",
-                      size: 36.0,
-                      onPressed: () {
-                        // TODO:
-                      },
+                      size: 40.0,
+                      onPressed: () => setState(() {
+                            _launched = _launchInBrowser(
+                                'https://www.facebook.com/JOINMUN/');
+                          }),
                     ),
                     new SocialMediaButton(
                       backgroundImage: "assets/ic_ig.png",
-                      size: 36.0,
-                      onPressed: () {
-                        // TODO:
-                      },
+                      size: 40.0,
+                      onPressed: () => setState(() {
+                            _launched = _launchInBrowser(
+                                'https://www.instagram.com/joinmun2018/');
+                          }),
                     ),
                     new SocialMediaButton(
                       backgroundImage: "assets/ic_twitter.png",
-                      size: 36.0,
-                      onPressed: () {
-                        // TODO:
-                      },
+                      size: 40.0,
+                      onPressed: () => setState(() {
+                            _launched = _launchInBrowser(
+                                'https://twitter.com/joinmun?lang=en');
+                          }),
                     )
                   ]),
             )),
@@ -169,10 +189,8 @@ class HomeView extends StatelessWidget {
           ),
           new SliverPadding(
             padding: mediaPadding,
-            sliver: SliverGrid(
-              gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                maxCrossAxisExtent: 500.0,
-              ),
+            sliver: SliverFixedExtentList(
+              itemExtent: 360.0,
               delegate: new SliverChildBuilderDelegate(
                 (BuildContext context, int index) {
                   final Remark remark = kRemarkLists[index];
