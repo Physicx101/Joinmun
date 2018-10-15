@@ -2,36 +2,44 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'dart:async';
-import 'package:joinmun/schedule/schedule.dart';
+import 'dart:ui';
 
-class ExplorePage extends StatefulWidget {
+
+class Post implements Comparable<Post> {
+  final String title;
+  final String desc;
+  final String image;
+
+  Post({this.title, this.desc, this.image});
+
   @override
-  _ExplorePageState createState() => new _ExplorePageState();
+  int compareTo(Post other) => title.compareTo(other.title);
 }
 
-class _ExplorePageState extends State<ExplorePage>
-    with SingleTickerProviderStateMixin {
-  TabController controller;
-  List<Place> allPlaces;
+class JoinTimesPage extends StatefulWidget {
+  @override
+  _JoinTimesPageState createState() => new _JoinTimesPageState();
+}
+
+class _JoinTimesPageState extends State<JoinTimesPage> {
+  List<Post> allPosts;
   StreamSubscription<QuerySnapshot> sub;
 
   @override
   void initState() {
-    controller = new TabController(vsync: this, length: 5);
     super.initState();
 
     final CollectionReference collection =
-        Firestore.instance.collection('place');
+        Firestore.instance.collection('post');
     sub = collection.snapshots().listen((QuerySnapshot snapshot) {
       setState(() {
-        allPlaces = snapshot.documents.map(_toPlaces).toList();
+        allPosts = snapshot.documents.map(_toPosts).toList();
       });
     });
   }
 
   @override
   void dispose() {
-    controller.dispose();
     super.dispose();
     sub?.cancel();
   }
@@ -39,124 +47,121 @@ class _ExplorePageState extends State<ExplorePage>
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
-    if (allPlaces == null) {
-      return new Scaffold(
-        appBar: new PreferredSize(
-          preferredSize: new Size.fromHeight(kTextTabBarHeight),
-          child: new Material(
-            color: theme.primaryColor,
-            elevation: 4.0,
-            child: new TabBar(
-              labelColor: theme.accentColor,
-              unselectedLabelColor: Colors.grey,
-              controller: controller,
-              tabs: <Widget>[
-                new Tab(text: "Art Museum"),
-                new Tab(text: "Landmarks"),
-                new Tab(text: "Nature"),
-                new Tab(text: "Culinary"),
-              ],
+    final EdgeInsets mediaPadding = MediaQuery.of(context).padding;
+
+    Widget _homeHeader() => Container(
+          constraints: new BoxConstraints.expand(
+            height: 200.0,
+          ),
+          decoration: new BoxDecoration(
+            image: new DecorationImage(
+              image: new AssetImage('assets/bg.jpg'),
+              fit: BoxFit.cover,
             ),
           ),
-        ),
+          child: new BackdropFilter(
+            filter: new ImageFilter.blur(sigmaX: 4.0, sigmaY: 4.0),
+            child: new Container(
+              decoration:
+                  new BoxDecoration(color: Colors.white.withOpacity(0.5)),
+              child: new Stack(
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: new Container(
+                      decoration: new BoxDecoration(
+                        image: new DecorationImage(
+                          image: new AssetImage('assets/banner.png'),
+                          fit: BoxFit.contain,
+                        ),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ),
+        );
+
+    if (allPosts == null) {
+      return new Scaffold(
         body: new Center(
           child: new CircularProgressIndicator(),
         ),
       );
     }
+
+    final List<Post> listPosts = allPosts.toList();
+
     return new Scaffold(
-      appBar: new PreferredSize(
-        preferredSize: new Size.fromHeight(kTextTabBarHeight),
-        child: new Material(
-          color: theme.primaryColor,
-          elevation: 4.0,
-          child: new TabBar(
-            labelStyle: new TextStyle(fontFamily: 'Montserrat'),
-            isScrollable: true,
-            labelColor: theme.accentColor,
-            unselectedLabelColor: Colors.grey,
-            controller: controller,
-            tabs: <Widget>[
-              new Tab(child: new Tab(text: 'Art & Museum')),
-              new Tab(text: 'Landmarks'),
-              new Tab(text: 'Nature'),
-              new Tab(text: 'Souvenir'),
-              new Tab(text: 'Culinary'),
-            ],
-          ),
-        ),
-      ),
-      body: new TabBarView(
-        controller: controller,
-        children: <Widget>[
-          buildListForPlaces(
-            context,
-            allPlaces.where((Place place) => place.type == 'art').toList()
-              ..sort(),
-          ),
-          buildListForPlaces(
-            context,
-            allPlaces.where((Place place) => place.type == 'landmark').toList()
-              ..sort(),
-          ),
-          buildListForPlaces(
-            context,
-            allPlaces.where((Place place) => place.type == 'nature').toList()
-              ..sort(),
-          ),
-          buildListForPlaces(
-              context,
-              allPlaces
-                  .where((Place place) => place.type == 'souvenir')
-                  .toList()
-                    ..sort(),),
-          buildListForPlaces(
-            context,
-            allPlaces.where((Place place) => place.type == 'culinary').toList()
-              ..sort(),
+      backgroundColor: Colors.white,
+      body: new CustomScrollView(
+        slivers: <Widget>[
+          new SliverAppBar(
+              expandedHeight: 220.0,
+              flexibleSpace: FlexibleSpaceBar(
+                background: _homeHeader(),
+              )),
+          new SliverPadding(
+            padding: const EdgeInsets.all(8.0),
+            sliver: SliverFixedExtentList(
+              itemExtent: 300.0,
+              delegate: new SliverChildBuilderDelegate(
+                (BuildContext context, int index) {
+                  final Post post = listPosts[index];
+                  return new PostCard(
+                    post,
+                  );
+                },
+                childCount: listPosts.length,
+              ),
+            ),
           ),
         ],
       ),
     );
   }
 
-  Widget buildListForPlaces(BuildContext context, Iterable<Place> places) {
-    final List<Place> listPlaces = places.toList();
+  
+
+  Widget buildListForPosts(BuildContext context, Iterable<Post> posts) {
+    final List<Post> listPosts = posts.toList();
 
     return new ListView.builder(
       padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
-      itemCount: listPlaces.length,
+      itemCount: listPosts.length,
       itemBuilder: (BuildContext context, int index) {
-        Place place = listPlaces[index];
-        return new PlaceCard(place);
+        Post post = listPosts[index];
+        return new PostCard(post);
       },
     );
   }
 
-  static Place _toPlaces(DocumentSnapshot snapshot) {
-    return new Place(
-      name: snapshot['name'],
+  static Post _toPosts(DocumentSnapshot snapshot) {
+    return new Post(
+      title: snapshot['title'],
       desc: snapshot['desc'],
-      type: snapshot['type'],
       image: snapshot['image'],
     );
   }
 }
 
-class PlaceCard extends StatelessWidget {
-  PlaceCard(this.place);
+class PostCard extends StatelessWidget {
+  PostCard(this.post);
 
   static final double height = 322.0;
 
-  final Place place;
+  final Post post;
 
   @override
   Widget build(BuildContext context) {
     Image image;
 
-    if (place.image != null) {
+   
+
+    if (post.image != null) {
       image = new Image.network(
-        place.image,
+        post.image,
         fit: BoxFit.cover,
       );
     } else {
@@ -172,7 +177,7 @@ class PlaceCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           new Hero(
-            tag: place.name,
+            tag: post.title,
             child: new ClipRRect(
               borderRadius: new BorderRadius.circular(8.0),
               child: new ConstrainedBox(
@@ -187,14 +192,15 @@ class PlaceCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
                 new Text(
-                  place.name ?? '',
+                  post.title ?? '',
                   style: titleStyle,
                   softWrap: false,
                   overflow: TextOverflow.ellipsis,
                 ),
                 const Padding(padding: const EdgeInsets.only(top: 8.0)),
                 new Text(
-                  place.desc ?? '',
+                  
+                  post.desc ?? '',
                   style: descStyle,
                   maxLines: 3,
                   overflow: TextOverflow.ellipsis,
@@ -207,7 +213,7 @@ class PlaceCard extends StatelessWidget {
     );
 
     return new GestureDetector(
-      onTap: () => showPlacePage(context, place),
+      onTap: () => showPlacePage(context, post),
       child: new Padding(
         padding: const EdgeInsets.symmetric(vertical: 8.0),
         child: card,
@@ -215,15 +221,15 @@ class PlaceCard extends StatelessWidget {
     );
   }
 
-  void showPlacePage(BuildContext context, Place place) {
+  void showPlacePage(BuildContext context, Post post) {
     Navigator.push(
       context,
       new MaterialPageRoute<Null>(
-        settings: const RouteSettings(name: '/places/place'),
+        settings: const RouteSettings(name: '/posts/post'),
         builder: (BuildContext context) {
           return new Theme(
             data: Theme.of(context),
-            child: new PlacePage(place),
+            child: new PostPage(post),
           );
         },
       ),
@@ -231,18 +237,18 @@ class PlaceCard extends StatelessWidget {
   }
 }
 
-class PlacePage extends StatelessWidget {
-  final Place place;
+class PostPage extends StatelessWidget {
+  final Post post;
 
-  PlacePage(this.place);
+  PostPage(this.post);
 
   @override
   Widget build(BuildContext context) {
     Image image;
 
-    if (place.image != null) {
+    if (post.image != null) {
       image = new Image.network(
-        place.image,
+        post.image,
         fit: BoxFit.cover,
       );
     } else {
@@ -261,7 +267,7 @@ class PlacePage extends StatelessWidget {
             flexibleSpace: new FlexibleSpaceBar(
               //title: const Text('Demo'),
               background: new Hero(
-                tag: place.name,
+                tag: post.title,
                 child: image,
               ),
             ),
@@ -273,11 +279,11 @@ class PlacePage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   new Text(
-                    place.name,
+                    post.title,
                     style: titleStyle,
                   ),
                   new SizedBox(height: 8.0),
-                  new Text(place.desc, style: descStyle.copyWith(height: 1.5)),
+                  new Text(post.desc, style: descStyle.copyWith(height: 1.5)),
                 ],
               ),
             ),
@@ -294,14 +300,3 @@ final TextStyle descStyle = const TextStyle(
     fontFamily: 'Montserrat');
 final TextStyle titleStyle = const TextStyle(
     fontSize: 20.0, fontWeight: FontWeight.w600, fontFamily: 'LemonMilk');
-
-class Place implements Comparable<Place> {
-  final String name;
-  final String desc;
-  final String type;
-  final String image;
-  Place({this.name, this.desc, this.type, this.image});
-
-  @override
-  int compareTo(Place other) => type.compareTo(other.type);
-}

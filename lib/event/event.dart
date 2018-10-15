@@ -3,52 +3,32 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:joinmun/utils/flexible_app_bar_widget.dart';
 
-
 class Event {
   final String name;
   final String time;
   final String date;
   final String dressCode;
   final String image;
-  final String imagePath;
   final IconData icon;
   final List<Speaker> speakers;
   final String where;
   final String floor;
   final String when;
   final String description;
-  final List<RecipeIngredient> ingredients;
-  final List<RecipeStep> steps;
 
-  const Event(
-      {this.name,
-        this.time,
-        this.date,
-      this.dressCode,
-      this.image,
-      this.imagePath,
-      this.icon,
-      this.speakers,
-      this.where,
-      this.floor,
-      this.when,
-      this.description,
-      this.ingredients,
-      this.steps});
-}
-
-class RecipeIngredient {
-  const RecipeIngredient({this.amount, this.description});
-
-  final String amount;
-  final String description;
-}
-
-class RecipeStep {
-  const RecipeStep({this.duration, this.description});
-
-  final String duration;
-  final String description;
+  const Event({
+    this.name,
+    this.time,
+    this.date,
+    this.dressCode,
+    this.image,
+    this.icon,
+    this.speakers,
+    this.where,
+    this.floor,
+    this.when,
+    this.description,
+  });
 }
 
 class Speaker {
@@ -58,24 +38,9 @@ class Speaker {
   const Speaker({this.fullName, this.avatarUrl});
 }
 
-
-
 const List<Event> kEvenLists = const <Event>[
   const Event(
     name: "Opening Ceremony",
-    ingredients: const <RecipeIngredient>[
-      const RecipeIngredient(
-          amount: '6 pieces', description: 'Mozzarella cheese'),
-      const RecipeIngredient(amount: '6 pieces', description: 'Toasts'),
-      const RecipeIngredient(amount: '⅔ cup', description: 'Homemade pesto'),
-      const RecipeIngredient(
-          amount: '1tbsp', description: 'Freshly ground pepper'),
-      const RecipeIngredient(amount: '1 tsp', description: 'Salt'),
-    ],
-    steps: const <RecipeStep>[
-      const RecipeStep(description: 'Put in oven'),
-      const RecipeStep(duration: '45 min', description: 'Cook'),
-    ],
     speakers: const <Speaker>[
       const Speaker(
           fullName: "Eugenio Marletti",
@@ -86,34 +51,20 @@ const List<Event> kEvenLists = const <Event>[
           avatarUrl:
               "http://it.droidcon.com/2017/wp-content/uploads/2015/02/sebastiano-poggi.jpg"),
     ],
-    where: "Arjuna Room",
+    where: "Keraton Ballroom",
     dressCode: "Business Attire",
     image: "assets/opening-ceremony.jpg",
-    imagePath: "assets/pesto/",
     icon: Icons.stars,
     floor: "Ground floor",
     date: "Thursday, 25 October",
     time: "16:00 - 18:00",
     when: "Thursday, 25 October at 16:00 - 18:00",
     description: """
-In this day and age, the Android UI is getting more and more features. Which is amazing. But they get layered on top of years of TODOs, less-than-clean code, and quick patches. This means the APIs are not as terse as us devs would like, and there’s plenty of unwritten knowledge to have to make things work. What if there was something that took the best bits of the Android UI model and wrapped that in a modern, sensible codebase?
+Welcoming the delegates with a spectacular opening at the Marriott Ballroom, this event will indulge delegates with a opening dinner. The ceremony will be filled with traditional performances, and 3 amazing speakers all for the talks revolving our grand theme. For beginner MUNers, worry not for we have an MUN 101 for you to learn the procedures of an MUN.
 """,
   ),
   const Event(
     name: "Closing Ceremony",
-    ingredients: const <RecipeIngredient>[
-      const RecipeIngredient(
-          amount: '6 pieces', description: 'Mozzarella cheese'),
-      const RecipeIngredient(amount: '6 pieces', description: 'Toasts'),
-      const RecipeIngredient(amount: '⅔ cup', description: 'Homemade pesto'),
-      const RecipeIngredient(
-          amount: '1tbsp', description: 'Freshly ground pepper'),
-      const RecipeIngredient(amount: '1 tsp', description: 'Salt'),
-    ],
-    steps: const <RecipeStep>[
-      const RecipeStep(description: 'Put in oven'),
-      const RecipeStep(duration: '45 min', description: 'Cook'),
-    ],
     speakers: const <Speaker>[
       const Speaker(
           fullName: "Eugenio Marletti",
@@ -124,10 +75,9 @@ In this day and age, the Android UI is getting more and more features. Which is 
           avatarUrl:
               "http://it.droidcon.com/2017/wp-content/uploads/2015/02/sebastiano-poggi.jpg"),
     ],
-    where: "Arjuna Room",
+    where: "Keraton Ballroom",
     dressCode: "Evening dress (F) & Black tie suit (M)",
     image: "assets/closing-ceremony.jpg",
-    imagePath: "assets/pesto/",
     icon: Icons.stars,
     floor: "Ground floor",
     date: "Saturday, 27 October",
@@ -139,19 +89,6 @@ Committee Session is the main event of JOINMUN 2018. There will be 6 councils (U
   ),
   const Event(
     name: "Committee Session",
-    ingredients: const <RecipeIngredient>[
-      const RecipeIngredient(
-          amount: '6 pieces', description: 'Mozzarella cheese'),
-      const RecipeIngredient(amount: '6 pieces', description: 'Toasts'),
-      const RecipeIngredient(amount: '⅔ cup', description: 'Homemade pesto'),
-      const RecipeIngredient(
-          amount: '1tbsp', description: 'Freshly ground pepper'),
-      const RecipeIngredient(amount: '1 tsp', description: 'Salt'),
-    ],
-    steps: const <RecipeStep>[
-      const RecipeStep(description: 'Put in oven'),
-      const RecipeStep(duration: '45 min', description: 'Cook'),
-    ],
     speakers: const <Speaker>[
       const Speaker(
           fullName: "Eugenio Marletti",
@@ -165,31 +102,17 @@ Committee Session is the main event of JOINMUN 2018. There will be 6 councils (U
     where: "Arjuna Room",
     dressCode: "Evening dress (F) & Black tie suit (M)",
     image: "assets/committee.jpg",
-    imagePath: "assets/pesto/",
     icon: Icons.stars,
     floor: "Ground floor",
     date: "Saturday, 27 October",
     time: "20:00 - 23:30",
     when: "Saturday, 27 October at 20:00 - 23:30",
     description: """
-In this day and age, the Android UI is getting more and more features. Which is amazing. But they get layered on top of years of TODOs, less-than-clean code, and quick patches. This means the APIs are not as terse as us devs would like, and there’s plenty of unwritten knowledge to have to make things work. What if there was something that took the best bits of the Android UI model and wrapped that in a modern, sensible codebase?
+What better way to close your whole experience in JOINMUN than a wonderful gala dinner? The awarding ceremonies filled with wonders will wrap up a wholesome conference. All the excitement of the committee sessions will lead up to this. Prepare your best gowns and suit and bring along a date for the night!
 """,
   ),
   const Event(
     name: "Social Night",
-    ingredients: const <RecipeIngredient>[
-      const RecipeIngredient(
-          amount: '6 pieces', description: 'Mozzarella cheese'),
-      const RecipeIngredient(amount: '6 pieces', description: 'Toasts'),
-      const RecipeIngredient(amount: '⅔ cup', description: 'Homemade pesto'),
-      const RecipeIngredient(
-          amount: '1tbsp', description: 'Freshly ground pepper'),
-      const RecipeIngredient(amount: '1 tsp', description: 'Salt'),
-    ],
-    steps: const <RecipeStep>[
-      const RecipeStep(description: 'Put in oven'),
-      const RecipeStep(duration: '45 min', description: 'Cook'),
-    ],
     speakers: const <Speaker>[
       const Speaker(
           fullName: "Eugenio Marletti",
@@ -200,10 +123,9 @@ In this day and age, the Android UI is getting more and more features. Which is 
           avatarUrl:
               "http://it.droidcon.com/2017/wp-content/uploads/2015/02/sebastiano-poggi.jpg"),
     ],
-    where: "Arjuna Room",
+    where: "Mezzanine Eatery",
     dressCode: "Neon or white casual tops!",
     image: "assets/social-night.jpg",
-    imagePath: "assets/pesto/",
     icon: Icons.local_bar,
     floor: "Ground floor",
     date: "Friday, 26 October",
@@ -215,19 +137,6 @@ Social Night is one of the most anticipated event in JOINMUN 2018. The event wil
   ),
   const Event(
     name: "Cultural Trip",
-    ingredients: const <RecipeIngredient>[
-      const RecipeIngredient(
-          amount: '6 pieces', description: 'Mozzarella cheese'),
-      const RecipeIngredient(amount: '6 pieces', description: 'Toasts'),
-      const RecipeIngredient(amount: '⅔ cup', description: 'Homemade pesto'),
-      const RecipeIngredient(
-          amount: '1tbsp', description: 'Freshly ground pepper'),
-      const RecipeIngredient(amount: '1 tsp', description: 'Salt'),
-    ],
-    steps: const <RecipeStep>[
-      const RecipeStep(description: 'Put in oven'),
-      const RecipeStep(duration: '45 min', description: 'Cook'),
-    ],
     speakers: const <Speaker>[
       const Speaker(
           fullName: "Eugenio Marletti",
@@ -238,10 +147,9 @@ Social Night is one of the most anticipated event in JOINMUN 2018. The event wil
           avatarUrl:
               "http://it.droidcon.com/2017/wp-content/uploads/2015/02/sebastiano-poggi.jpg"),
     ],
-    where: "Arjuna Room",
+    where: "Tamansari and Kraton Yogyakarta",
     dressCode: "Comfortable, casual clothing",
     image: "assets/cultural-trip.jpg",
-    imagePath: "assets/pesto/",
     icon: Icons.directions_bus,
     floor: "Ground floor",
     date: "Sunday, 28 October",
@@ -282,7 +190,6 @@ class EventStyle extends TextStyle {
 class EventCardWidget extends StatelessWidget {
   EventCardWidget(this.event);
 
-
   final Event event;
 
   @override
@@ -294,7 +201,7 @@ class EventCardWidget extends StatelessWidget {
     final TextStyle dayStyle = const TextStyle(
         fontSize: 18.0, fontWeight: FontWeight.w500, fontFamily: 'Montserrat');
     final TextStyle timeStyle = const TextStyle(
-    fontSize: 20.0, fontWeight: FontWeight.w500, fontFamily: 'Montserrat');
+        fontSize: 20.0, fontWeight: FontWeight.w500, fontFamily: 'Montserrat');
     Image image;
 
     if (event.image != null) {
@@ -315,16 +222,16 @@ class EventCardWidget extends StatelessWidget {
         child: new Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-           new Hero(
-                  tag: event.image,
-                  child: new ClipRRect(
-                    borderRadius: new BorderRadius.circular(8.0),
-                    child: new Image.asset(
-                      event.image,
-                      height: 188.0,
-                      fit: BoxFit.cover,
-                    ),
-                  )),
+            new Hero(
+                tag: event.image,
+                child: new ClipRRect(
+                  borderRadius: new BorderRadius.circular(8.0),
+                  child: new Image.asset(
+                    event.image,
+                    height: 188.0,
+                    fit: BoxFit.cover,
+                  ),
+                )),
             new Expanded(
               child: new Padding(
                 padding: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0.0),
@@ -345,9 +252,15 @@ class EventCardWidget extends StatelessWidget {
                       ),
                       Padding(
                         padding: const EdgeInsets.only(bottom: 2.0),
-                        child: new Text(event.date,  style: timeStyle.copyWith(color: Colors.black54),),
+                        child: new Text(
+                          event.date,
+                          style: timeStyle.copyWith(color: Colors.black54),
+                        ),
                       ),
-                      new Text(event.time,  style: timeStyle.copyWith(color: Colors.black54),),
+                      new Text(
+                        event.time,
+                        style: timeStyle.copyWith(color: Colors.black54),
+                      ),
                     ],
                   ),
                 ),
@@ -371,7 +284,7 @@ class EventCardWidget extends StatelessWidget {
     Navigator.push(
       context,
       new MaterialPageRoute<Null>(
-        settings: const RouteSettings(name:'event'),
+        settings: const RouteSettings(name: 'event'),
         builder: (BuildContext context) {
           return new Theme(
             data: Theme.of(context),
@@ -384,42 +297,37 @@ class EventCardWidget extends StatelessWidget {
 }
 
 class EventDetail extends StatelessWidget {
-
-
   final Event event;
 
   EventDetail(this.event);
   @override
   Widget build(BuildContext context) {
+    List<Widget> _speakersWidgets(
+        TextStyle speakerTextStyle, List<Speaker> speakers) {
+      final speakerNames =
+          speakers.map((speaker) => speaker.fullName).join(", ");
 
-    List<Widget> _speakersWidgets
-        (TextStyle speakerTextStyle, List<Speaker> speakers) {
-      final speakerNames = speakers.map((speaker) => speaker.fullName).join(", ");
+      final speakerNamesWidget =
+          new Text(speakerNames, style: speakerTextStyle);
 
-      final speakerNamesWidget = new Text(speakerNames, style: speakerTextStyle);
-    
       return [
         new Row(
             children: speakers
-                .map((speaker) =>
-            new Padding(
-              padding: new EdgeInsets.only(right: 6.0),
-              child: new CircleAvatar(
-                backgroundImage: new NetworkImage(speaker.avatarUrl),
-                radius: 20.0,
-              ),
-            )
-            )
+                .map((speaker) => new Padding(
+                      padding: new EdgeInsets.only(right: 6.0),
+                      child: new CircleAvatar(
+                        backgroundImage: new NetworkImage(speaker.avatarUrl),
+                        radius: 20.0,
+                      ),
+                    ))
                 .toList()),
         new Padding(
             padding: new EdgeInsets.only(top: 9.0), child: speakerNamesWidget),
       ];
     }
 
-    Widget _rowWithLabelWidget(String label,
-        TextStyle labelTextStyle,
-        double labelChildrenInset,
-        Iterable<Widget> children) =>
+    Widget _rowWithLabelWidget(String label, TextStyle labelTextStyle,
+            double labelChildrenInset, Iterable<Widget> children) =>
         new Padding(
           padding: new EdgeInsets.only(bottom: 32.0),
           child: new Row(
@@ -430,16 +338,13 @@ class EventDetail extends StatelessWidget {
                 width: labelChildrenInset,
                 child: new Text(label, style: labelTextStyle),
               ),
-            ]
-              ..addAll(children),
+            ]..addAll(children),
           ),
         );
     var theme = Theme.of(context);
 
     final leftPadding = 16.0;
     final keylineAfterLabel = 72.0 - leftPadding;
-
-  
 
     final speakerTextStyle = theme.textTheme.title.copyWith(
       color: Colors.white,
@@ -450,46 +355,33 @@ class EventDetail extends StatelessWidget {
     );
 
     final labelsTextStyle = speakerTextStyle.copyWith(
-      color: theme.primaryColor, fontFamily: 'Montserrat'
-    );
+        color: theme.primaryColor, fontFamily: 'Montserrat');
 
     final floorTextStyle = theme.textTheme.body1.copyWith(
       color: const Color(0x8A6B6B6B),
     );
 
-    final descriptionTextStyle = theme.textTheme.body1.copyWith(
-      height: 1.5, fontFamily: 'Montserrat', color: Colors.black54
-    );
+    final descriptionTextStyle = theme.textTheme.body1
+        .copyWith(height: 1.5, fontFamily: 'Montserrat', color: Colors.black54);
 
+    final rowWhen =
+        _rowWithLabelWidget("When", labelsTextStyle, keylineAfterLabel, [
+      new Text(
+        event.when,
+        style: descriptionTextStyle,
+      ),
+    ]);
 
-
-
-    final rowWhen = _rowWithLabelWidget(
-        "When",
-        labelsTextStyle,
-        keylineAfterLabel,
-        [
-          new Text(event.when, style: descriptionTextStyle,),
-        ]
-    );
-
-    final rowWhere = _rowWithLabelWidget(
-        "Where",
-        labelsTextStyle,
-        keylineAfterLabel,
-        [
-          new Text(event.where, style: descriptionTextStyle),
-        ]
-    );
+    final rowWhere =
+        _rowWithLabelWidget("Where", labelsTextStyle, keylineAfterLabel, [
+      new Text(event.where, style: descriptionTextStyle),
+    ]);
 
     final rowDressCode = _rowWithLabelWidget(
         "DC",
         labelsTextStyle,
         keylineAfterLabel,
-        [
-          new Text(event.dressCode, style: descriptionTextStyle)
-        ]
-    );
+        [new Text(event.dressCode, style: descriptionTextStyle)]);
 
     final rowAbout = new Padding(
       padding: new EdgeInsets.only(bottom: 16.0),
@@ -546,10 +438,7 @@ class EventDetail extends StatelessWidget {
       ),
     );
   }
-
 }
-
-
 
 class EventView extends StatelessWidget {
   @override

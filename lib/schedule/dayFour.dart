@@ -9,8 +9,8 @@ class DayFour extends StatelessWidget {
   List<String> scheduleName = ['Check out', 'Cultural Trip', 'Lunch'];
   List<String> scheduleTime = [
     '07:30 - 08:00',
-    '09:00 - 12:00',
-    '12:00 - 14:00'
+    '09:00 - 12:30',
+    '12:30 - 14:00'
   ];
   @override
   Widget build(BuildContext context) {

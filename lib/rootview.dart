@@ -14,6 +14,8 @@ import 'package:joinmun/explore/explore.dart';
 import 'package:joinmun/feedback/launcher.dart';
 import 'package:joinmun/documents/documents.dart';
 import 'package:joinmun/chairs/chairs.dart';
+import 'package:joinmun/jointimes/jointimes.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class RootView extends StatefulWidget {
   @override
@@ -23,7 +25,7 @@ class RootView extends StatefulWidget {
 }
 
 class _RootViewState extends State<RootView> with TickerProviderStateMixin {
-  Future<Null> _launched;
+  
   final String _feedbackURL = 'http://ugm.id/joinmunfeedback';
   String _title = "";
   int _currentIndex = 0;
@@ -42,94 +44,108 @@ class _RootViewState extends State<RootView> with TickerProviderStateMixin {
   List<PageContainer> _createPages() {
     return <PageContainer>[
       new PageContainer(
-        title: "HOME",
+        title: 'HOME',
         icon: new Icon(Icons.home),
         hasTab: true,
-        isExternal: false,
+        callback: () {
+                  Navigator.of(context).pop(); // Hide drawer
+                },
         body: () => new HomePage(),
         tickerProvider: this,
       ),
       new PageContainer(
-        title: "JOINTIMES",
+        title: 'JOINTIMES',
         icon: new Icon(Icons.import_contacts),
         hasTab: false,
-        isExternal: false,
-        body: () => new ScheduleView(),
+         callback: () {
+                  Navigator.of(context).pop(); // Hide drawer
+                },
+        body: () => new JoinTimesPage(),
         tickerProvider: this,
       ),
       new PageContainer(
-        title: "SCHEDULE",
+        title: 'SCHEDULE',
         icon: new Icon(Icons.schedule),
         hasTab: true,
-        isExternal: false,
+         callback: () {
+                  Navigator.of(context).pop(); // Hide drawer
+                },
         body: () => new ScheduleView(),
         tickerProvider: this,
       ),
       new PageContainer(
-        title: "EVENTS",
+        title: 'EVENTS',
         icon: new Icon(Icons.event),
         hasTab: false,
-        isExternal: false,
+         callback: () {
+                  Navigator.of(context).pop(); // Hide drawer
+                },
         body: () => new EventView(),
         tickerProvider: this,
       ),
-       new PageContainer(
-        title: "CHAIRS",
+      new PageContainer(
+        title: 'CHAIRS',
         icon: new Icon(Icons.event),
         hasTab: false,
-        isExternal: false,
+         callback: () {
+                  Navigator.of(context).pop(); // Hide drawer
+                },
         body: () => new ChairPage(),
         tickerProvider: this,
       ),
       new PageContainer(
-        title: "PLACES TO VISIT",
+        title: 'PLACES TO VISIT',
         icon: new Icon(Icons.explore),
         hasTab: true,
-        isExternal: false,
+         callback: () {
+                  Navigator.of(context).pop(); // Hide drawer
+                },
         body: () => new ExplorePage(),
         tickerProvider: this,
       ),
       new PageContainer(
-        title: "HANDBOOK",
+        title: 'HANDBOOK',
         icon: new Icon(Icons.book),
         hasTab: false,
-        isExternal: false,
+          callback: () {
+                  Navigator.of(context).pop(); // Hide drawer
+                },
         body: () => new DocumentsPage(),
         tickerProvider: this,
       ),
       new PageContainer(
-        title: "MERCH",
+        title: 'MERCH',
         icon: new Icon(Icons.local_mall),
         hasTab: false,
-        isExternal: false,
+         callback: () {
+                  Navigator.of(context).pop(); // Hide drawer
+                },
         body: () => new MerchPage(),
         tickerProvider: this,
       ),
       new PageContainer(
-        title: "CONTACTS",
+        title: 'CONTACTS',
         icon: new Icon(Icons.contact_phone),
         hasTab: false,
-        isExternal: false,
+       callback: () {
+                  Navigator.of(context).pop(); // Hide drawer
+                },
         body: () => new ContactsPage(),
         tickerProvider: this,
       ),
       new PageContainer(
-        title: "FEEDBACK",
+        title: 'FEEDBACK',
         icon: new Icon(Icons.feedback),
         hasTab: true,
         body: () => MyApp(),
-        isExternal: true,
+        callback: () async {
+                        if (await canLaunch(_feedbackURL)) {
+                          await launch(_feedbackURL, forceSafariVC: true, forceWebView: true);
+                        }
+                      },
         tickerProvider: this,
       ),
     ];
-  }
-
-  Future<Null> _launchInWebViewOrVC(String url) async {
-    if (await canLaunch(url)) {
-      await launch(url, forceSafariVC: true, forceWebView: true);
-    } else {
-      throw 'Could not launch $url';
-    }
   }
 
   Widget _buildTransitionsStack() {
@@ -172,7 +188,6 @@ class _RootViewState extends State<RootView> with TickerProviderStateMixin {
               _currentIndex = index;
               _page.controller.forward();
               _title = _page.title.toString();
-             
             });
           },
         ),

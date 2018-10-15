@@ -3,6 +3,7 @@ import 'package:joinmun/layout_type.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/foundation.dart';
 import 'package:joinmun/home/home.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class MerchHeader implements SliverPersistentHeaderDelegate {
   MerchHeader({
@@ -15,6 +16,10 @@ class MerchHeader implements SliverPersistentHeaderDelegate {
   final VoidCallback onLayoutToggle;
   double maxExtent;
   double minExtent;
+
+  final String fb = 'https://www.facebook.com/JOINMUN/';
+  final String ig = 'https://www.instagram.com/joinmun.store/';
+  final String twitter = 'https://twitter.com/joinmun?lang=en';
 
   @override
   Widget build(
@@ -57,22 +62,28 @@ class MerchHeader implements SliverPersistentHeaderDelegate {
               SocialMediaButton(
                 backgroundImage: "assets/ic_fb_white.png",
                 size: 32.0,
-                onPressed: () {
-                  // TODO:
+                onPressed: () async {
+                  if (await canLaunch(fb)) {
+                    await launch(fb);
+                  }
                 },
               ),
               SocialMediaButton(
                 backgroundImage: "assets/ic_ig_white.png",
                 size: 32.0,
-                onPressed: () {
-                  // TODO:
+                onPressed: () async {
+                  if (await canLaunch(ig)) {
+                    await launch(ig);
+                  }
                 },
               ),
               SocialMediaButton(
                 backgroundImage: "assets/ic_twitter_white.png",
                 size: 32.0,
-                onPressed: () {
-                  // TODO:
+                onPressed: () async {
+                  if (await canLaunch(twitter)) {
+                    await launch(twitter);
+                  }
                 },
               ),
             ],
@@ -184,8 +195,8 @@ class MerchPage extends StatelessWidget implements HasLayoutGroup {
                             ),
                             new Image.asset(
                               assetNames[index],
-                              fit: BoxFit.contain,
-                              height: 150.0,
+                              fit: BoxFit.fill,
+                              height: 120.0,
                             ),
                             new Padding(
                               padding: mediaPadding,
@@ -197,9 +208,7 @@ class MerchPage extends StatelessWidget implements HasLayoutGroup {
                                     color: Theme.of(context).accentColor),
                               ),
                             ),
-                            new SizedBox(
-                              height: 8.0
-                            )
+                        
                           ],
                         ),
                       ],

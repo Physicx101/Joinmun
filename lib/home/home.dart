@@ -7,7 +7,7 @@ final TextStyle titleStyle = const TextStyle(
     fontSize: 24.0, fontWeight: FontWeight.w500, fontFamily: 'LemonMilk');
 
 final TextStyle nameStyle = const TextStyle(
-    fontWeight: FontWeight.w700, fontSize: 18.0, fontFamily: 'Montserrat');
+    fontWeight: FontWeight.w700, fontSize: 16.0, fontFamily: 'Montserrat');
 
 final TextStyle descStyle = const TextStyle(
     fontSize: 14.0,
@@ -57,24 +57,10 @@ Secretary-General of Jogja International Model United Nations 2018
                   """)
 ];
 
-class HomePage extends StatefulWidget {
-  HomePage({Key key}) : super(key: key);
-  Size deviceSize;
-
-  @override
-  _HomePageState createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  Future<Null> _launched;
-
-  Future<Null> _launchInBrowser(String url) async {
-    if (await canLaunch(url)) {
-      await launch(url, forceSafariVC: false, forceWebView: false);
-    } else {
-      throw 'Could not launch $url';
-    }
-  }
+class HomePage extends StatelessWidget {
+  final String fb = 'https://www.facebook.com/JOINMUN/';
+  final String ig = 'https://www.instagram.com/joinmun2018/';
+  final String twitter = 'https://twitter.com/joinmun?lang=en';
 
   Widget _homeHeader() => Container(
         constraints: new BoxConstraints.expand(
@@ -130,26 +116,29 @@ class _HomePageState extends State<HomePage> {
                     new SocialMediaButton(
                       backgroundImage: "assets/ic_fb.png",
                       size: 40.0,
-                      onPressed: () => setState(() {
-                            _launched = _launchInBrowser(
-                                'https://www.facebook.com/JOINMUN/');
-                          }),
+                      onPressed: () async {
+                        if (await canLaunch(fb)) {
+                          await launch(fb);
+                        }
+                      },
                     ),
                     new SocialMediaButton(
                       backgroundImage: "assets/ic_ig.png",
                       size: 40.0,
-                      onPressed: () => setState(() {
-                            _launched = _launchInBrowser(
-                                'https://www.instagram.com/joinmun2018/');
-                          }),
+                      onPressed: () async {
+                        if (await canLaunch(ig)) {
+                          await launch(ig);
+                        }
+                      },
                     ),
                     new SocialMediaButton(
                       backgroundImage: "assets/ic_twitter.png",
                       size: 40.0,
-                      onPressed: () => setState(() {
-                            _launched = _launchInBrowser(
-                                'https://twitter.com/joinmun?lang=en');
-                          }),
+                      onPressed: () async {
+                        if (await canLaunch(twitter)) {
+                          await launch(twitter);
+                        }
+                      },
                     )
                   ]),
             )),
@@ -221,7 +210,7 @@ class RemarksCard extends StatelessWidget {
     return new GestureDetector(
       onTap: () => openRemarksPage(context, remark),
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 8.0),
+        padding: const EdgeInsets.all(8.0),
         child: new Card(
           elevation: 0.0,
           child: Padding(

@@ -7,8 +7,9 @@ class Chair implements Comparable<Chair> {
   final String name;
   final String institute;
   final String chair;
+  final String bio;
   final String image;
-  Chair({this.name, this.institute, this.chair, this.image});
+  Chair({this.name, this.institute, this.chair, this.bio,  this.image});
 
   @override
   int compareTo(Chair other) => chair.compareTo(other.chair);
@@ -244,6 +245,7 @@ class _ChairPageState extends State<ChairPage> {
       name: snapshot['name'],
       institute: snapshot['institute'],
       chair: snapshot['chair'],
+      bio: snapshot['bio'],
       image: snapshot['image'],
     );
   }
@@ -323,7 +325,7 @@ class SpeakerDetail extends StatelessWidget {
           _buildAvatarImage(context),
           _buildTitle(context),
           _buildOrganizationChip(context),
-          //_buildBio(context)
+          _buildBio(context)
         ],
       ),
     );
@@ -361,15 +363,15 @@ class SpeakerDetail extends StatelessWidget {
     );
   }
 
-  /* Widget _buildBio(BuildContext context) {
+   Widget _buildBio(BuildContext context) {
     return Container(
       padding: EdgeInsets.all(16.0),
       child: Text(
-        speaker.bio,
+        chair.bio,
         style: TextStyle(fontSize: 18.0),
       ),
     );
-  }*/
+  }
 }
 
 class AvatarFadeImage extends StatelessWidget {

@@ -32,10 +32,11 @@ class MyDrawer extends StatelessWidget {
         ListTileTheme(
           textColor: Colors.white,
           selectedColor: theme.accentColor,
-          child: new ListTile(
-              //leading: container.icon,
-              title: Center(
-                child: new Text(
+          child: Padding(
+            padding: const EdgeInsets.all(4.0),
+            child: new ListTile(
+                //leading: container.icon,
+                title: new Text(
                   container.title,
                   style: TextStyle(
                     fontFamily: 'Montserrat',
@@ -44,36 +45,43 @@ class MyDrawer extends StatelessWidget {
                     fontSize: 16.0,
                   ),
                 ),
-              ),
-              selected: currentIndex == i,
-              onTap: () {
-                Navigator.of(context).pop(); // Hide drawer
-                if (onTap != null) onTap(i);
-              }),
+                selected: currentIndex == i,
+                onTap: () {
+                  if (container.title == 'FEEDBACK') {
+                    container.callback();
+                  } else {
+                    container.callback();
+                    if (onTap != null) onTap(i);
+                  }
+                }),
+          ),
         ),
       );
     }
 
-    return new Drawer(
-      child: Container(
-        color: theme.primaryColor,
-        child: new Column(
-          children: <Widget>[
-            new Container(
-              height: 100.0,
-            ),
-            new Expanded(
-              child: new ListView(
-                children: <Widget>[
-                  new Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: lists,
-                  ),
-                ],
+    return SizedBox(
+      width: 250.0,
+      child: new Drawer(
+        child: Container(
+          color: theme.primaryColor,
+          child: new Column(
+            children: <Widget>[
+              new Container(
+                height: 50.0,
               ),
-            ),
-          ],
+              new Expanded(
+                child: new ListView(
+                  children: <Widget>[
+                    new Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: lists,
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

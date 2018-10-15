@@ -5,7 +5,7 @@ class PageContainer {
     this.title,
     this.icon,
     this.hasTab,
-    this.isExternal,
+    this.callback,
     this.body,
     TickerProvider tickerProvider,
   }) : controller = new AnimationController(
@@ -20,7 +20,7 @@ class PageContainer {
 
   final String title;
   final Widget icon;
-  final bool isExternal;
+  final VoidCallback callback;
   final bool hasTab;
   final ValueGetter<Widget> body;
   final AnimationController controller;
