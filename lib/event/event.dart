@@ -84,7 +84,7 @@ Welcoming the delegates with a spectacular opening at the Marriott Ballroom, thi
     time: "20:00 - 23:30",
     when: "Saturday, 27 October at 20:00 - 23:30",
     description: """
-Committee Session is the main event of JOINMUN 2018. There will be 6 councils (UNGA, UNHRC, UNFCCC, UNSC, G20, PCA) + Press Committee. For 2 days straight (insert date), the delegate's skills in speech, diplomacy, and research will be put to the test by having discussions about their respective councils topic.
+What better way to close your whole experience in JOINMUN than a wonderful gala dinner? The awarding ceremonies filled with wonders will wrap up a wholesome conference. All the excitement of the committee sessions will lead up to this. Prepare your best gowns and suit and bring along a date for the night!
 """,
   ),
   const Event(
@@ -108,7 +108,7 @@ Committee Session is the main event of JOINMUN 2018. There will be 6 councils (U
     time: "20:00 - 23:30",
     when: "Saturday, 27 October at 20:00 - 23:30",
     description: """
-What better way to close your whole experience in JOINMUN than a wonderful gala dinner? The awarding ceremonies filled with wonders will wrap up a wholesome conference. All the excitement of the committee sessions will lead up to this. Prepare your best gowns and suit and bring along a date for the night!
+Committee Session is the main event of JOINMUN 2018. There will be 6 councils (UNGA, UNHRC, UNFCCC, UNSC, G20, PCA) + Press Committee. For 2 days straight (insert date), the delegate's skills in speech, diplomacy, and research will be put to the test by having discussions about their respective councils topic.
 """,
   ),
   const Event(
