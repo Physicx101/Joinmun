@@ -17,9 +17,8 @@ class MerchHeader implements SliverPersistentHeaderDelegate {
   double maxExtent;
   double minExtent;
 
-  final String fb = 'https://www.facebook.com/JOINMUN/';
   final String ig = 'https://www.instagram.com/joinmun.store/';
-  final String twitter = 'https://twitter.com/joinmun?lang=en';
+  final String line = 'https://line.me/R/ti/p/@kyr5219e';
 
   @override
   Widget build(
@@ -30,6 +29,7 @@ class MerchHeader implements SliverPersistentHeaderDelegate {
         Image.asset(
           'assets/bg.jpg',
           fit: BoxFit.cover,
+          color: Theme.of(context).primaryColor,
         ),
         Container(
           decoration: BoxDecoration(
@@ -45,46 +45,42 @@ class MerchHeader implements SliverPersistentHeaderDelegate {
             ),
           ),
         ),
-        Positioned(
-          left: 16.0,
-          right: 16.0,
-          bottom: 16.0,
-          child: Row(
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               Text(
-                'Get these merch at:',
+                'Get them now at:',
                 style: TextStyle(
-                    fontSize: 20.0,
+                    fontSize: 22.0,
                     color: Colors.white,
-                    fontFamily: 'Montserrat'),
+                    fontFamily: 'Montserrat',
+                    fontWeight: FontWeight.w700),
               ),
-              SocialMediaButton(
-                backgroundImage: "assets/ic_fb_white.png",
-                size: 32.0,
-                onPressed: () async {
-                  if (await canLaunch(fb)) {
-                    await launch(fb);
-                  }
-                },
-              ),
-              SocialMediaButton(
-                backgroundImage: "assets/ic_ig_white.png",
-                size: 32.0,
-                onPressed: () async {
-                  if (await canLaunch(ig)) {
-                    await launch(ig);
-                  }
-                },
-              ),
-              SocialMediaButton(
-                backgroundImage: "assets/ic_twitter_white.png",
-                size: 32.0,
-                onPressed: () async {
-                  if (await canLaunch(twitter)) {
-                    await launch(twitter);
-                  }
-                },
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  SocialMediaButton(
+                    backgroundImage: 'assets/ic_ig.png',
+                    size: 72.0,
+                    onPressed: () async {
+                      if (await canLaunch(ig)) {
+                        await launch(ig);
+                      }
+                    },
+                  ),
+                  SocialMediaButton(
+                    backgroundImage: 'assets/ic_line_white.png',
+                    size: 72.0,
+                    onPressed: () async {
+                      if (await canLaunch(line)) {
+                        await launch(line);
+                      }
+                    },
+                  ),
+                ],
               ),
             ],
           ),
@@ -136,9 +132,10 @@ class MerchPage extends StatelessWidget implements HasLayoutGroup {
 
   @override
   Widget build(BuildContext context) {
+    var theme = Theme.of(context);
     return Scaffold(
       body: _scrollView(context),
-      backgroundColor: Theme.of(context).primaryColor,
+      backgroundColor: Colors.black12,
     );
   }
 
@@ -155,70 +152,65 @@ class MerchPage extends StatelessWidget implements HasLayoutGroup {
               layoutGroup: layoutGroup,
               onLayoutToggle: onLayoutToggle,
               minExtent: 150.0,
-              maxExtent: 230.0,
+              maxExtent: 200.0,
             ),
           ),
-          SliverGrid(
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              mainAxisSpacing: 2.0,
-              crossAxisSpacing: 2.0,
-              childAspectRatio: 0.75,
-            ),
-            delegate: SliverChildBuilderDelegate(
-              (BuildContext context, int index) {
-                return Container(
-                  alignment: Alignment.center,
-                  padding: const EdgeInsets.all(8.0),
-                  child: new Card(
+          SliverPadding(
+            padding: const EdgeInsets.all(8.0),
+            sliver: SliverGrid(
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                mainAxisSpacing: 8.0,
+                crossAxisSpacing: 8.0,
+                childAspectRatio: 0.75,
+              ),
+              delegate: SliverChildBuilderDelegate(
+                (BuildContext context, int index) {
+                  return new Card(
                     color: Colors.white,
                     elevation: 0.0,
-                    child: new Stack(
+                    child: new Column(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: <Widget>[
-                        new Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: <Widget>[
-                            new Align(
-                              alignment: Alignment.centerRight,
-                              child: new Container(
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: new Text(
-                                    productPrice[index],
-                                    style: new TextStyle(
-                                        fontFamily: 'LemonMilk',
-                                        fontSize: 14.0,
-                                        color: Theme.of(context).accentColor),
-                                  ),
-                                ),
-                              ),
-                            ),
-                            new Image.asset(
-                              assetNames[index],
-                              fit: BoxFit.fill,
-                              height: 120.0,
-                            ),
-                            new Padding(
-                              padding: mediaPadding,
+                        new Align(
+                          alignment: Alignment.centerRight,
+                          child: new Container(
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
                               child: new Text(
-                                productNames[index],
+                                productPrice[index],
                                 style: new TextStyle(
                                     fontFamily: 'LemonMilk',
                                     fontSize: 14.0,
-                                    color: Theme.of(context).accentColor),
+                                    color: Theme.of(context).primaryColor),
                               ),
                             ),
-                        
-                          ],
+                          ),
+                        ),
+                        new Image.asset(
+                          assetNames[index],
+                          fit: BoxFit.contain,
+                          height: 145.0,
+                        ),
+                        new Padding(
+                          padding: mediaPadding,
+                          child: new Text(
+                            productNames[index],
+                            style: new TextStyle(
+                                fontFamily: 'LemonMilk',
+                                fontSize: 15.0,
+                                color: Theme.of(context).primaryColor),
+                          ),
                         ),
                       ],
                     ),
-                  ),
-                );
-              },
-              childCount: assetNames.length,
+                  );
+                },
+                childCount: assetNames.length,
+              ),
             ),
-          ),
+          )
         ],
       ),
     );

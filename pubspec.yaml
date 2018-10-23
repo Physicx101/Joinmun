@@ -9,10 +9,8 @@ dependencies:
   cloud_firestore: ^0.7.2
   uri: ^0.11.3
   url_launcher: ^4.0.1
-  sticky_headers: ^0.1.7
   intl: ^0.15.7
-  flutter_webview_plugin: ^0.2.1+2
-  flutter_staggered_grid_view: "^0.2.2"
+  photo_view: ^0.0.10
   
 
   # The following adds the Cupertino Icons font to your application.
@@ -37,16 +35,20 @@ flutter:
 
 
   assets:
+    - assets/committee-sessions.png
+    - assets/trip-map.png
+    - assets/session-map.png
+    - assets/ic_line.png
+    - assets/ic_line_white.png
+    - assets/speaker1.jpg
+    - assets/speaker2.jpg
+    - assets/speaker3.jpg
     - assets/avatar_placeholder.png
-    - assets/committee.jpg
     - assets/social-night.jpg
     - assets/opening-ceremony.jpg
     - assets/closing-ceremony.jpg
-    - assets/cultural-trip.jpg
+    - assets/cultural-trip.png
     - assets/banner.png
-    - assets/photo.png
-    - assets/lost.png
-    - assets/bicycle.png
     - assets/ic_fb_white.png
     - assets/ic_twitter_white.png
     - assets/ic_ig_white.png
@@ -62,15 +64,9 @@ flutter:
     - assets/ic_fb.png
     - assets/ic_twitter.png
     - assets/ic_ig.png
-    - assets/ic_bus.png
-    - assets/ic_taxi.png
-    - assets/ic_place_orange_24.png
-    - assets/ic_train_orange_24.png
-    - assets/ic_googlemap.png
     - assets/nothing_here.png
-    - assets/img_drawer_header.png
+  
     
-
 
   fonts:
     - family: CenturyGothic

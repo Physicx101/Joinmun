@@ -1,19 +1,19 @@
 //import 'package:SquanchyFlutter/utils/button_widgets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:joinmun/utils/flexible_app_bar_widget.dart';
+import 'package:photo_view/photo_view.dart';
 
 class Event {
   final String name;
   final String time;
   final String date;
   final String dressCode;
+  final bool hasMap;
   final String image;
-  final IconData icon;
   final List<Speaker> speakers;
   final String where;
-  final String floor;
   final String when;
+  final String itinerary;
   final String description;
 
   const Event({
@@ -21,12 +21,12 @@ class Event {
     this.time,
     this.date,
     this.dressCode,
+    this.hasMap,
     this.image,
-    this.icon,
     this.speakers,
     this.where,
-    this.floor,
     this.when,
+    this.itinerary,
     this.description,
   });
 }
@@ -54,13 +54,13 @@ const List<Event> kEvenLists = const <Event>[
     where: "Keraton Ballroom",
     dressCode: "Business Attire",
     image: "assets/opening-ceremony.jpg",
-    icon: Icons.stars,
-    floor: "Ground floor",
+    hasMap: false,
     date: "Thursday, 25 October",
     time: "16:00 - 18:00",
     when: "Thursday, 25 October at 16:00 - 18:00",
+    itinerary: 'nothing',
     description: """
-Welcoming the delegates with a spectacular opening at the Marriott Ballroom, this event will indulge delegates with a opening dinner. The ceremony will be filled with traditional performances, and 3 amazing speakers all for the talks revolving our grand theme. For beginner MUNers, worry not for we have an MUN 101 for you to learn the procedures of an MUN.
+Welcoming the delegates with a spectacular opening at the Marriott Ballroom, this event will indulge delegates with an opening dinner. The ceremony will be filled with traditional performances, and three amazing speakers all for the talks revolving our grand theme. For beginner MUNers, worry not for we have an MUN 101 for you to learn the procedures of an MUN.
 """,
   ),
   const Event(
@@ -76,19 +76,19 @@ Welcoming the delegates with a spectacular opening at the Marriott Ballroom, thi
               "http://it.droidcon.com/2017/wp-content/uploads/2015/02/sebastiano-poggi.jpg"),
     ],
     where: "Keraton Ballroom",
-    dressCode: "Evening dress (F) & Black tie suit (M)",
+    dressCode: "Evening dress (F) & Suit and tie (M)",
     image: "assets/closing-ceremony.jpg",
-    icon: Icons.stars,
-    floor: "Ground floor",
+    hasMap: false,
     date: "Saturday, 27 October",
     time: "20:00 - 23:30",
     when: "Saturday, 27 October at 20:00 - 23:30",
+    itinerary: 'nothing',
     description: """
 What better way to close your whole experience in JOINMUN than a wonderful gala dinner? The awarding ceremonies filled with wonders will wrap up a wholesome conference. All the excitement of the committee sessions will lead up to this. Prepare your best gowns and suit and bring along a date for the night!
 """,
   ),
   const Event(
-    name: "Committee Session",
+    name: "Committee Sessions",
     speakers: const <Speaker>[
       const Speaker(
           fullName: "Eugenio Marletti",
@@ -99,16 +99,24 @@ What better way to close your whole experience in JOINMUN than a wonderful gala 
           avatarUrl:
               "http://it.droidcon.com/2017/wp-content/uploads/2015/02/sebastiano-poggi.jpg"),
     ],
-    where: "Arjuna Room",
-    dressCode: "Evening dress (F) & Black tie suit (M)",
-    image: "assets/committee.jpg",
-    icon: Icons.stars,
-    floor: "Ground floor",
-    date: "Saturday, 27 October",
+    where: """SPECPOL - Keraton 1 Ballroom
+UNHRC - Malioboro 4 & 5 
+UNFCCC - Malioboro 6
+Group of 20 - Malioboro 7
+UNSC - Malioboro 3
+PCA - Malioboro 2
+""",
+    dressCode: "Business Attire",
+    image: "assets/committee-sessions.png",
+    hasMap: true,
+    date: """Friday, 26 October - 
+Saturday, 27 October""",
     time: "20:00 - 23:30",
-    when: "Saturday, 27 October at 20:00 - 23:30",
+    when: """Friday, 26 October - 
+Saturday, 27 October""",
+    itinerary: 'none',
     description: """
-Committee Session is the main event of JOINMUN 2018. There will be 6 councils (UNGA, UNHRC, UNFCCC, UNSC, G20, PCA) + Press Committee. For 2 days straight (insert date), the delegate's skills in speech, diplomacy, and research will be put to the test by having discussions about their respective councils topic.
+Committee Session is the main event of JOINMUN 2018. There will be 6 councils (UNGA, UNHRC, UNFCCC, UNSC, G20, PCA) + Press Committee. For 2 days straight, the delegate's skills in speech, diplomacy, and research will be put to the test by having discussions about their respective councils topic.
 """,
   ),
   const Event(
@@ -126,11 +134,11 @@ Committee Session is the main event of JOINMUN 2018. There will be 6 councils (U
     where: "Mezzanine Eatery",
     dressCode: "Neon or white casual tops!",
     image: "assets/social-night.jpg",
-    icon: Icons.local_bar,
-    floor: "Ground floor",
+    hasMap: false,
     date: "Friday, 26 October",
     time: "20:00 - 23:30",
     when: "Friday, 26 October at 20:00 - 23:30",
+    itinerary: 'none',
     description: """
 Social Night is one of the most anticipated event in JOINMUN 2018. The event will be held at Mezzanine Greenhouse with a black light theme. The delegates will enjoy engaging with one another by dancing, playing beer pong, body painting, and many more. Dress to impress and wear your glow.
 """,
@@ -148,13 +156,19 @@ Social Night is one of the most anticipated event in JOINMUN 2018. The event wil
               "http://it.droidcon.com/2017/wp-content/uploads/2015/02/sebastiano-poggi.jpg"),
     ],
     where: "Tamansari and Kraton Yogyakarta",
-    dressCode: "Comfortable, casual clothing",
-    image: "assets/cultural-trip.jpg",
-    icon: Icons.directions_bus,
-    floor: "Ground floor",
+    dressCode: """Comfortable, casual clothing
+with Sandals or comfortable shoes""",
+    image: "assets/cultural-trip.png",
+    hasMap: true,
     date: "Sunday, 28 October",
     time: "09:00 - 12:00",
     when: "Sunday, 28 October at 09:00 - 12:00",
+    itinerary: """Keep in mind that we are going to a palace so shorts and short skirts are not allowed
+Things to Prepare: 
+an umbrella, poncho, or other rain kit (in case of rain)
+Sunglasses, sunscreen, cap
+
+""",
     description: """
 Cultural Trip is one of the trade mark event of JOINMUN. On October 28, we would like take you to experience Jogjakarta in its finest historical places. The delegates will have a chance to emerge themselves in the place where the history were made in Taman Sari and you'll get to watch the infamous Javanese traditional dance performance in the Sultan's Palace of Kraton Ngayogyakarta.
 
@@ -217,56 +231,59 @@ class EventCardWidget extends StatelessWidget {
     }
 
     final card = new Container(
-      child: new Card(
-        elevation: 0.0,
-        child: new Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            new Hero(
-                tag: event.image,
-                child: new ClipRRect(
-                  borderRadius: new BorderRadius.circular(8.0),
-                  child: new Image.asset(
-                    event.image,
-                    height: 188.0,
-                    fit: BoxFit.cover,
-                  ),
-                )),
-            new Expanded(
-              child: new Padding(
-                padding: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0.0),
-                child: new DefaultTextStyle(
-                  style: descriptionStyle,
-                  softWrap: false,
-                  overflow: TextOverflow.ellipsis,
-                  child: new Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      new Padding(
-                        padding: const EdgeInsets.only(bottom: 4.0),
-                        child: new Text(
-                          event.name,
-                          style: titleStyle,
+      child: Padding(
+        padding: const EdgeInsets.all(4.0),
+        child: new Card(
+          elevation: 0.0,
+          child: new Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              new Hero(
+                  tag: event.image,
+                  child: new ClipRRect(
+                    borderRadius: new BorderRadius.circular(8.0),
+                    child: new Image.asset(
+                      event.image,
+                      height: 188.0,
+                      fit: BoxFit.cover,
+                    ),
+                  )),
+              new Expanded(
+                child: new Padding(
+                  padding: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0.0),
+                  child: new DefaultTextStyle(
+                    style: descriptionStyle,
+                    softWrap: false,
+                    overflow: TextOverflow.ellipsis,
+                    child: new Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        new Padding(
+                          padding: const EdgeInsets.only(bottom: 4.0),
+                          child: new Text(
+                            event.name,
+                            style: titleStyle,
+                          ),
                         ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 2.0),
-                        child: new Text(
-                          event.date,
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 2.0),
+                          child: new Text(
+                            event.date,
+                            style: timeStyle.copyWith(color: Colors.black54),
+                          ),
+                        ),
+                        new Text(
+                          event.time,
                           style: timeStyle.copyWith(color: Colors.black54),
                         ),
-                      ),
-                      new Text(
-                        event.time,
-                        style: timeStyle.copyWith(color: Colors.black54),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
@@ -388,6 +405,17 @@ class EventDetail extends StatelessWidget {
       child: new Text("About", style: labelsTextStyle),
     );
 
+    final rowItinerary = new Padding(
+      padding: new EdgeInsets.only(bottom: 16.0),
+      child: new Text("Itinerary", style: labelsTextStyle),
+    );
+
+    final rowItineraryContent = new Text(
+      event.itinerary,
+      style: descriptionTextStyle,
+    );
+
+
     final rowDescription = new Text(
       event.description,
       style: descriptionTextStyle,
@@ -395,48 +423,215 @@ class EventDetail extends StatelessWidget {
 
     final TextStyle titleStyle = const TextStyle(
         fontSize: 24.0, fontWeight: FontWeight.w500, fontFamily: 'LemonMilk');
-    return new Scaffold(
-      body: new CustomScrollView(
-        slivers: <Widget>[
-          new SliverAppBar(
-            expandedHeight: 250.0,
-            backgroundColor: Colors.transparent,
-            flexibleSpace: new FlexibleSpaceBar(
-              //TODO: Fix hero animation
-              background: new Hero(
-                tag: event.image,
-                child: new Image.asset(
-                  event.image,
-                  fit: BoxFit.cover,
+
+    if (event.name == 'Cultural Trip') {
+      return new Scaffold(
+        body: new CustomScrollView(
+          slivers: <Widget>[
+            new SliverAppBar(
+              expandedHeight: 200.0,
+              backgroundColor: Colors.transparent,
+              flexibleSpace: new FlexibleSpaceBar(
+                //TODO: Fix hero animation
+                background: new Hero(
+                  tag: event.image,
+                  child: new Image.asset(
+                    event.image,
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
             ),
-          ),
-          new SliverToBoxAdapter(
-            child: new Padding(
-              padding: new EdgeInsets.all(16.0),
-              child: new Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  new Text(
-                    event.name,
-                    style: titleStyle,
-                  ),
-                  new SizedBox(
-                    height: 8.0,
-                  ),
-                  rowWhen,
-                  rowWhere,
-                  rowDressCode,
-                  rowAbout,
-                  rowDescription,
-                ],
+            new SliverToBoxAdapter(
+              child: new Padding(
+                padding: new EdgeInsets.all(16.0),
+                child: new Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    new Text(
+                      event.name,
+                      style: titleStyle,
+                    ),
+                    new SizedBox(
+                      height: 8.0,
+                    ),
+                    rowWhen,
+                    rowWhere,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: <Widget>[
+                        FlatButton(
+                            child: Text(
+                              'View map',
+                              style: TextStyle(color: theme.accentColor),
+                            ),
+                            onPressed: () => showMap(context, event.name)),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 8.0,
+                    ),
+                    
+                    rowDressCode,
+                    rowItinerary,
+                    rowItineraryContent,
+                    rowAbout,
+                    rowDescription,
+                  ],
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
+      );
+    }
+    if (event.hasMap) {
+      return new Scaffold(
+        body: new CustomScrollView(
+          slivers: <Widget>[
+            new SliverAppBar(
+              expandedHeight: 200.0,
+              backgroundColor: Colors.transparent,
+              flexibleSpace: new FlexibleSpaceBar(
+                //TODO: Fix hero animation
+                background: new Hero(
+                  tag: event.image,
+                  child: new Image.asset(
+                    event.image,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+            ),
+            new SliverToBoxAdapter(
+              child: new Padding(
+                padding: new EdgeInsets.all(16.0),
+                child: new Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    new Text(
+                      event.name,
+                      style: titleStyle,
+                    ),
+                    new SizedBox(
+                      height: 8.0,
+                    ),
+                    rowWhen,
+                    rowWhere,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: <Widget>[
+                        FlatButton(
+                            child: Text(
+                              'View map',
+                              style: TextStyle(color: theme.accentColor),
+                            ),
+                            onPressed: () => showMap(context, event.name)),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 8.0,
+                    ),
+                    rowDressCode,
+                    rowAbout,
+                    rowDescription,
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      );
+    } else {
+      return new Scaffold(
+        body: new CustomScrollView(
+          slivers: <Widget>[
+            new SliverAppBar(
+              expandedHeight: 200.0,
+              backgroundColor: Colors.transparent,
+              flexibleSpace: new FlexibleSpaceBar(
+                //TODO: Fix hero animation
+                background: new Hero(
+                  tag: event.image,
+                  child: new Image.asset(
+                    event.image,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+            ),
+            new SliverToBoxAdapter(
+              child: new Padding(
+                padding: new EdgeInsets.all(16.0),
+                child: new Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    new Text(
+                      event.name,
+                      style: titleStyle,
+                    ),
+                    new SizedBox(
+                      height: 8.0,
+                    ),
+                    rowWhen,
+                    rowWhere,
+                    rowDressCode,
+                    rowAbout,
+                    rowDescription,
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      );
+    }
+  }
+
+  void showMap(BuildContext context, String title) {
+    Navigator.push(
+      context,
+      new MaterialPageRoute<Null>(
+        settings: const RouteSettings(name: 'map'),
+        builder: (BuildContext context) {
+          return new Theme(
+            data: Theme.of(context),
+            child: new ViewMap(title),
+          );
+        },
       ),
     );
+  }
+}
+
+class ViewMap extends StatelessWidget {
+  ViewMap(this.title);
+
+  final String title;
+
+  @override
+  Widget build(BuildContext context) {
+    if (title == 'Committee Sessions') {
+      return Scaffold(
+          appBar: AppBar(
+            title: Text(title + ' map'),
+          ),
+          body: Container(
+            child: PhotoView(
+              imageProvider: AssetImage("assets/session-map.png"),
+            ),
+          ));
+    } else {
+      return Scaffold(
+          appBar: AppBar(
+            title: Text(title + ' map'),
+          ),
+          body: Container(
+            child: PhotoView(
+              imageProvider: AssetImage("assets/trip-map.png"),
+            ),
+          ));
+    }
   }
 }
 
@@ -457,8 +652,6 @@ class EventGridPage extends StatefulWidget {
 }
 
 class _EventGridPageState extends State<EventGridPage> {
-  final GlobalKey<ScaffoldState> scaffoldKey = new GlobalKey<ScaffoldState>();
-
   @override
   Widget build(BuildContext context) {
     final double statusBarHeight = MediaQuery.of(context).padding.top;
@@ -466,7 +659,6 @@ class _EventGridPageState extends State<EventGridPage> {
       data: _kTheme.copyWith(platform: Theme.of(context).platform),
       child: new Scaffold(
         backgroundColor: Colors.white,
-        key: scaffoldKey,
         body: new CustomScrollView(
           slivers: <Widget>[
             _buildBody(context, statusBarHeight),
@@ -486,7 +678,7 @@ class _EventGridPageState extends State<EventGridPage> {
     return new SliverPadding(
       padding: padding,
       sliver: new SliverFixedExtentList(
-        itemExtent: 320.0,
+        itemExtent: 360.0,
         delegate: new SliverChildBuilderDelegate(
           (BuildContext context, int index) {
             final Event event = widget.events[index];

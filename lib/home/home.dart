@@ -163,7 +163,7 @@ class HomePage extends StatelessWidget {
       body: new CustomScrollView(
         slivers: <Widget>[
           new SliverAppBar(
-              expandedHeight: 220.0,
+              expandedHeight: 180.0,
               flexibleSpace: FlexibleSpaceBar(
                 background: _homeHeader(),
               )),
@@ -290,7 +290,7 @@ class RemarksPage extends StatelessWidget {
       body: new CustomScrollView(
         slivers: <Widget>[
           new SliverAppBar(
-            expandedHeight: 250.0,
+            expandedHeight: 200.0,
             backgroundColor: Colors.transparent,
             flexibleSpace: new FlexibleSpaceBar(
               background: new Hero(
@@ -345,7 +345,7 @@ class SocialMediaButton extends StatelessWidget {
     return new Material(
         elevation: 0.0,
         shape: CircleBorder(),
-        color: Colors.transparent,
+        color: Colors.white,
         child: Ink.image(
           image: AssetImage(backgroundImage),
           fit: BoxFit.cover,

@@ -358,7 +358,7 @@ class SpeakerDetail extends StatelessWidget {
     return Center(
       child: Text(
           chair.institute,
-          style: instStyle.copyWith(fontSize: 16.0)
+          style: instStyle.copyWith(fontSize: 16.0,color: Colors.black)
         ),
     );
   }
@@ -368,7 +368,7 @@ class SpeakerDetail extends StatelessWidget {
       padding: EdgeInsets.all(16.0),
       child: Text(
         chair.bio,
-        style: TextStyle(fontSize: 18.0),
+        style: bioStyle,
       ),
     );
   }
@@ -401,3 +401,9 @@ final TextStyle instStyle = const TextStyle(
     fontWeight: FontWeight.w500,
     fontFamily: 'Montserrat',
     color: Colors.black54);
+    final TextStyle bioStyle = const TextStyle(
+    fontSize: 14.0,
+    fontFamily: 'Montserrat',
+    fontWeight: FontWeight.w500,
+    color: Colors.black54,
+    height: 1.5);

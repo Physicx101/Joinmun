@@ -32,29 +32,26 @@ class MyDrawer extends StatelessWidget {
         ListTileTheme(
           textColor: Colors.white,
           selectedColor: theme.accentColor,
-          child: Padding(
-            padding: const EdgeInsets.all(4.0),
-            child: new ListTile(
-                //leading: container.icon,
-                title: new Text(
-                  container.title,
-                  style: TextStyle(
-                    fontFamily: 'Montserrat',
-                    fontWeight: FontWeight.w500,
-                    letterSpacing: 1.0,
-                    fontSize: 16.0,
-                  ),
+          child: new ListTile(
+              //leading: container.icon,
+              title: new Text(
+                container.title,
+                style: TextStyle(
+                  fontFamily: 'Montserrat',
+                  fontWeight: FontWeight.w500,
+                  letterSpacing: 1.0,
+                  fontSize: 14.0,
                 ),
-                selected: currentIndex == i,
-                onTap: () {
-                  if (container.title == 'FEEDBACK') {
-                    container.callback();
-                  } else {
-                    container.callback();
-                    if (onTap != null) onTap(i);
-                  }
-                }),
-          ),
+              ),
+              selected: currentIndex == i,
+              onTap: () {
+                if (container.title == 'FEEDBACK') {
+                  container.callback();
+                } else {
+                  container.callback();
+                  if (onTap != null) onTap(i);
+                }
+              }),
         ),
       );
     }
@@ -66,8 +63,8 @@ class MyDrawer extends StatelessWidget {
           color: theme.primaryColor,
           child: new Column(
             children: <Widget>[
-              new Container(
-                height: 50.0,
+              Container(
+                height:25.0
               ),
               new Expanded(
                 child: new ListView(

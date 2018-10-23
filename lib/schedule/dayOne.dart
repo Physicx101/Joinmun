@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 class DayOne extends StatelessWidget {
  @override
   Widget build(BuildContext context) {
-    List<IconData> icon = [Icons.assignment, Icons.stars, Icons.restaurant, Icons.group];
-    List<String> scheduleName = ['Registration and Check-in', 'Opening Ceremony', 'Dinner', 'Conference Zero'];
-    List<String> scheduleTime = ['13:00 - 15:00', '16:00 - 18:00', '18:00 - 19:15', '19:15 - 20:30'];
+    List<IconData> icon = [Icons.hotel, Icons.assignment, Icons.stars, Icons.restaurant, Icons.group];
+    List<String> scheduleName = ['Hotel Check-In for Accommodation', 'Delegates Registration', 'Opening Ceremony', 'Dinner', 'Conference Zero'];
+    List<String> scheduleTime = ['10:00 - 14:00', '14:00 - 15:30', '16:00 - 18:00', '18:00 - 19:15', '19:15 - 20:30'];
     var theme = Theme.of(context);
     return new Container(
       child: new StreamBuilder(

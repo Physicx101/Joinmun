@@ -4,13 +4,14 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'dart:async';
 import 'dart:ui';
 
-
 class Post implements Comparable<Post> {
   final String title;
-  final String desc;
+  final String content;
   final String image;
+  final String author;
+  final String date;
 
-  Post({this.title, this.desc, this.image});
+  Post({this.title, this.content, this.image, this.author, this.date});
 
   @override
   int compareTo(Post other) => title.compareTo(other.title);
@@ -98,14 +99,14 @@ class _JoinTimesPageState extends State<JoinTimesPage> {
       body: new CustomScrollView(
         slivers: <Widget>[
           new SliverAppBar(
-              expandedHeight: 220.0,
+              expandedHeight: 180.0,
               flexibleSpace: FlexibleSpaceBar(
                 background: _homeHeader(),
               )),
           new SliverPadding(
             padding: const EdgeInsets.all(8.0),
             sliver: SliverFixedExtentList(
-              itemExtent: 300.0,
+              itemExtent: 170.0,
               delegate: new SliverChildBuilderDelegate(
                 (BuildContext context, int index) {
                   final Post post = listPosts[index];
@@ -116,13 +117,11 @@ class _JoinTimesPageState extends State<JoinTimesPage> {
                 childCount: listPosts.length,
               ),
             ),
-          ),
+          )
         ],
       ),
     );
   }
-
-  
 
   Widget buildListForPosts(BuildContext context, Iterable<Post> posts) {
     final List<Post> listPosts = posts.toList();
@@ -140,8 +139,10 @@ class _JoinTimesPageState extends State<JoinTimesPage> {
   static Post _toPosts(DocumentSnapshot snapshot) {
     return new Post(
       title: snapshot['title'],
-      desc: snapshot['desc'],
+      content: snapshot['content'],
       image: snapshot['image'],
+      author: snapshot['author'],
+      date: snapshot['date'],
     );
   }
 }
@@ -149,79 +150,86 @@ class _JoinTimesPageState extends State<JoinTimesPage> {
 class PostCard extends StatelessWidget {
   PostCard(this.post);
 
-  static final double height = 322.0;
-
   final Post post;
 
   @override
   Widget build(BuildContext context) {
-    Image image;
-
-   
-
-    if (post.image != null) {
-      image = new Image.network(
-        post.image,
-        fit: BoxFit.cover,
-      );
-    } else {
-      image = new Image.asset(
-        'assets/fakhri.png',
-        fit: BoxFit.cover,
-      );
-    }
-
-    final Card card = new Card(
-      elevation: 0.0,
-      child: new Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          new Hero(
-            tag: post.title,
-            child: new ClipRRect(
-              borderRadius: new BorderRadius.circular(8.0),
-              child: new ConstrainedBox(
-                constraints: new BoxConstraints(maxHeight: 200.0),
-                child: image,
-              ),
-            ),
-          ),
-          new Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: new Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
+    return new GestureDetector(
+      onTap: () => showPostPage(context, post),
+      child: new Padding(
+        padding: const EdgeInsets.fromLTRB(0.0, 0.5, 0.0, 0.5),
+        child: Card(
+          elevation: 0.0,
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                new Text(
-                  post.title ?? '',
-                  style: titleStyle,
-                  softWrap: false,
-                  overflow: TextOverflow.ellipsis,
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(0.0, 12.0, 0.0, 12.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Flexible(
+                        child: Text(
+                          post.title,
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 22.0,
+                              fontFamily: 'Montserrat'),
+                        ),
+                        flex: 3,
+                      ),
+                      Flexible(
+                        flex: 1,
+                        child: Container(
+                          height: 80.0,
+                          width: 80.0,
+                          child: Hero(
+                            tag: post.title,
+                            child: new ClipRRect(
+                                child: Image.network(
+                                  post.image,
+                                  fit: BoxFit.cover,
+                                ),
+                                borderRadius: new BorderRadius.circular(8.0)),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-                const Padding(padding: const EdgeInsets.only(top: 8.0)),
-                new Text(
-                  
-                  post.desc ?? '',
-                  style: descStyle,
-                  maxLines: 3,
-                  overflow: TextOverflow.ellipsis,
-                )
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Text(
+                          post.author,
+                          style: TextStyle(
+                              fontSize: 18.0, fontFamily: 'Montserrat'),
+                        ),
+                        Text(
+                          post.date,
+                          style: TextStyle(
+                              color: Colors.black45,
+                              fontWeight: FontWeight.w500,
+                              fontFamily: 'Montserrat'),
+                        )
+                      ],
+                    ),
+                  ],
+                ),
               ],
             ),
           ),
-        ],
-      ),
-    );
-
-    return new GestureDetector(
-      onTap: () => showPlacePage(context, post),
-      child: new Padding(
-        padding: const EdgeInsets.symmetric(vertical: 8.0),
-        child: card,
+        ),
       ),
     );
   }
 
-  void showPlacePage(BuildContext context, Post post) {
+  void showPostPage(BuildContext context, Post post) {
     Navigator.push(
       context,
       new MaterialPageRoute<Null>(
@@ -244,48 +252,42 @@ class PostPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Image image;
-
-    if (post.image != null) {
-      image = new Image.network(
-        post.image,
-        fit: BoxFit.cover,
-      );
-    } else {
-      image = new Image.asset(
-        'assets/fakrhi.png',
-        fit: BoxFit.cover,
-      );
-    }
-
     return new Scaffold(
       body: new CustomScrollView(
         slivers: <Widget>[
           new SliverAppBar(
-            expandedHeight: 250.0,
-            backgroundColor: Colors.transparent,
-            flexibleSpace: new FlexibleSpaceBar(
-              //title: const Text('Demo'),
-              background: new Hero(
-                tag: post.title,
-                child: image,
-              ),
-            ),
+            backgroundColor: Theme.of(context).primaryColor,
           ),
           new SliverToBoxAdapter(
-            child: new Padding(
-              padding: new EdgeInsets.all(16.0),
-              child: new Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  new Text(
+            child: new Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: new Text(
                     post.title,
-                    style: titleStyle,
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 22.0,
+                        fontFamily: 'Montserrat'),
                   ),
-                  new SizedBox(height: 8.0),
-                  new Text(post.desc, style: descStyle.copyWith(height: 1.5)),
-                ],
-              ),
+                ),
+                new SizedBox(height: 8.0),
+                Hero(
+                  tag: post.title,
+                  child: new Image.network(
+                    post.image,
+                    fit: BoxFit.fitWidth,
+                    height: 200.0,
+                    width: MediaQuery.of(context).size.width,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: new Text(post.content,
+                      style: descStyle.copyWith(height: 1.5)),
+                ),
+              ],
             ),
           ),
         ],
@@ -296,7 +298,7 @@ class PostPage extends StatelessWidget {
 
 final TextStyle descStyle = const TextStyle(
     fontWeight: FontWeight.w500,
-    color: Colors.black54,
+    color: Colors.black87,
     fontFamily: 'Montserrat');
 final TextStyle titleStyle = const TextStyle(
     fontSize: 20.0, fontWeight: FontWeight.w600, fontFamily: 'LemonMilk');

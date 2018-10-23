@@ -15,6 +15,7 @@ import 'package:joinmun/feedback/launcher.dart';
 import 'package:joinmun/documents/documents.dart';
 import 'package:joinmun/chairs/chairs.dart';
 import 'package:joinmun/jointimes/jointimes.dart';
+import 'package:joinmun/speaker/speakers.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class RootView extends StatefulWidget {
@@ -84,6 +85,16 @@ class _RootViewState extends State<RootView> with TickerProviderStateMixin {
         tickerProvider: this,
       ),
       new PageContainer(
+        title: 'SPEAKERS',
+        icon: new Icon(Icons.people),
+        hasTab: false,
+        callback: () {
+          Navigator.of(context).pop();
+        },
+        body: () => new SpeakersPage(),
+        tickerProvider: this,
+      ),
+      new PageContainer(
         title: 'CHAIRS',
         icon: new Icon(Icons.event),
         hasTab: false,
@@ -116,7 +127,7 @@ class _RootViewState extends State<RootView> with TickerProviderStateMixin {
       new PageContainer(
         title: 'MERCH',
         icon: new Icon(Icons.local_mall),
-        hasTab: false,
+        hasTab: true,
          callback: () {
                   Navigator.of(context).pop(); // Hide drawer
                 },
