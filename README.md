@@ -9,7 +9,7 @@ This is the application for delegates and guests of Jogja International Model Un
 
 This app is built using [Flutter](https://flutter.io/) and [Firebase](https://firebase.google.com) for both Android and iOS.
 
-You can install the app via <a href='https://play.google.com/store/apps/details?id=com.jogjainternational.joinmun'><img width="150" alt='Get it on Google Play' src='https://play.google.com/intl/ja/badges/images/generic/en_badge_web_generic.png'/></a> or <a href="https://itunes.apple.com/id/app/joinmun-2018/id1439869971?l=id&mt=8"><img src="screenshots/app_store-badge.png" width="150" /></a> 
+You can install the app via <a href='https://play.google.com/store/apps/details?id=com.jogjainternational.joinmun'><img width="150" alt='Get it on Google Play' src='https://play.google.com/intl/ja/badges/images/generic/en_badge_web_generic.png'/></a> or <a href="https://itunes.apple.com/id/app/joinmun-2018/id1439869971?l=id&mt=8"><img src="screenshots/app-store-badge.png" width="150" /></a> 
 
 # Features
 <img src="screenshots/app_home.png" width="200" /> <img src="screenshots/app_schedule.png" width="200" /> <img src="screenshots/app_events.png" width="200" /> <img src="screenshots/app_places.png" width="200" />
