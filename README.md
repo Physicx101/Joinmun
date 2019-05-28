@@ -7,7 +7,7 @@ The Jogja International Model United Nations ([JOINMUN](https://www.joinmun.com)
 
 This is the application for delegates and guests of Jogja International Model United Nations 2018. Your experience throughout the conference will be a lot more convenient with this app as your guide as you go through the 4-day event and explore Yogyakarta.
 
-This app is built using [Flutter](https://flutter.io/) and [Firebase](https://firebase.google.com) for both Android and iOS.
+This app is built using [Flutter](https://flutter.io/) and [Firebase Cloud Firestore](https://firebase.google.com) for both Android and iOS.
 
 You can install the app via <a href='https://play.google.com/store/apps/details?id=com.jogjainternational.joinmun'><img width="150" alt='Get it on Google Play' src='https://play.google.com/intl/ja/badges/images/generic/en_badge_web_generic.png'/></a> or <a href="https://itunes.apple.com/id/app/joinmun-2018/id1439869971?l=id&mt=8"><img src="screenshots/app-store-badge.png" width="150" /></a> 
 
