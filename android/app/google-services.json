@@ -1,0 +1,83 @@
+{
+  "project_info": {
+    "project_number": "668887050716",
+    "firebase_url": "https://joinmun-864f5.firebaseio.com",
+    "project_id": "joinmun-864f5",
+    "storage_bucket": "joinmun-864f5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:668887050716:android:d1fed2121ffc9290",
+        "android_client_info": {
+          "package_name": "com.jogjainternational.joinmun"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "668887050716-q2cok7ddjirl4ia3or9m9kou2813pol6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdjC4tGDfUTjY-9YWKXJrOUN3YSZZNrbU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "668887050716-q2cok7ddjirl4ia3or9m9kou2813pol6.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "668887050716-2fgijp6qlsempeml6iaak490lip35hdt.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.jogjainternational.joinmun"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:668887050716:android:e47a65d7801cb4ee2f0719",
+        "android_client_info": {
+          "package_name": "com.jogjainternational.joinmun2019"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "668887050716-q2cok7ddjirl4ia3or9m9kou2813pol6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdjC4tGDfUTjY-9YWKXJrOUN3YSZZNrbU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "668887050716-q2cok7ddjirl4ia3or9m9kou2813pol6.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "668887050716-2fgijp6qlsempeml6iaak490lip35hdt.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.jogjainternational.joinmun"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

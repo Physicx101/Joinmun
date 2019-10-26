@@ -1,0 +1,12 @@
+{
+    "chairs": [
+        {
+            "chair_id": "1",
+            "chair_name": "Kishan D. Buxani",
+            "chair_institute": "Advance Tertiary College",
+            "chair_group": "SPECPOl",
+            "chair_image": "https://i.postimg.cc/vHMnyzJJ/Yushan-G20.png",
+            "chair_bio": "Yushan is a rising freshman at NUS doing a double major in Political Science and Economics. She is currently serving as the business director and MUN trainer of the Political Science Society in NUS. Outside of school, she is a research analyst under the Singapore International Mediation Centre as a finance intern. Her recent encounters with MUN in 2017 saw her chairing conferences in countries and cities such as Kuala Lumpur, Hong Kong and Indonesia, as well as bringing home the Best Delegate/Diplomacy awards at AMUNC, PAMUN and TMUN. As the bidding team captain, she successfully secured the bid for the 25th iteration of Asia Pacific MUN and will be serving as Secretary General next year."
+        }
+    ]
+}

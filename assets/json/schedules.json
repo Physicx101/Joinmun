@@ -1,0 +1,211 @@
+{
+    "schedules": [
+      {
+        "schedule_id": "1",
+        "schedule_start_time": "10:00",
+        "schedule_end_time": "14:00",
+        "schedule_title": "Hotel Check-In for Accomodation",
+        "schedule_place": "Main Lobby",
+        "schedule_day": "one"
+      },
+      {
+        "schedule_id": "2",
+        "schedule_start_time": "14:00",
+        "schedule_end_time": "15:30",
+        "schedule_title": "Delegates Registration",
+        "schedule_place": "Main Lobby",
+        "schedule_day": "one"
+      },{
+        "schedule_id": "3",
+        "schedule_start_time": "16:00",
+        "schedule_end_time": "18:00",
+        "schedule_title": "Opening Ceremony",
+        "schedule_place": "Main Lobby",
+        "schedule_day": "one"
+      },{
+        "schedule_id": "4",
+        "schedule_start_time": "18:00",
+        "schedule_end_time": "19:15",
+        "schedule_title": "Dinner",
+        "schedule_place": "Main Lobby",
+        "schedule_day": "one"
+      },{
+        "schedule_id": "5",
+        "schedule_start_time": "19:15",
+        "schedule_end_time": "20:30",
+        "schedule_title": "Conference Zero",
+        "schedule_place": "Main Lobby",
+        "schedule_day": "one"
+      },
+      {
+        "schedule_id": "6",
+        "schedule_start_time": "07:30",
+        "schedule_end_time": "08:15",
+        "schedule_title": "Registration",
+        "schedule_place": "Main Lobby",
+        "schedule_day": "two"
+      },
+      {
+        "schedule_id": "7",
+        "schedule_start_time": "08:30",
+        "schedule_end_time": "10:30",
+        "schedule_title": "Committee Session I",
+        "schedule_place": "Main Lobby",
+        "schedule_day": "two"
+      },
+      {
+        "schedule_id": "8",
+        "schedule_start_time": "10:30",
+        "schedule_end_time": "10:45",
+        "schedule_title": "Coffee Break",
+        "schedule_place": "Main Lobby",
+        "schedule_day": "two"
+      },
+      {
+        "schedule_id": "9",
+        "schedule_start_time": "10:45",
+        "schedule_end_time": "11:45",
+        "schedule_title": "Committee Session II",
+        "schedule_place": "Main Lobby",
+        "schedule_day": "two"
+      },
+      {
+        "schedule_id": "10",
+        "schedule_start_time": "11:45",
+        "schedule_end_time": "13:50",
+        "schedule_title": "Lunch Break & Prayer",
+        "schedule_place": "Main Lobby",
+        "schedule_day": "two"
+      },
+      {
+        "schedule_id": "11",
+        "schedule_start_time": "14:00",
+        "schedule_end_time": "15:30",
+        "schedule_title": "Committee Session III",
+        "schedule_place": "Main Lobby",
+        "schedule_day": "two"
+      },
+      {
+        "schedule_id": "12",
+        "schedule_start_time": "15:30",
+        "schedule_end_time": "15:45",
+        "schedule_title": "Coffee Break",
+        "schedule_place": "Main Lobby",
+        "schedule_day": "two"
+      },
+      {
+        "schedule_id": "13",
+        "schedule_start_time": "15:45",
+        "schedule_end_time": "17:30",
+        "schedule_title": "Committee Session IV",
+        "schedule_place": "Main Lobby",
+        "schedule_day": "two"
+      },
+      {
+        "schedule_id": "14",
+        "schedule_start_time": "20:00",
+        "schedule_end_time": "23:30",
+        "schedule_title": "Social Night",
+        "schedule_place": "Main Lobby",
+        "schedule_day": "two"
+      },
+      {
+        "schedule_id": "15",
+        "schedule_start_time": "07:30",
+        "schedule_end_time": "08:15",
+        "schedule_title": "Registration",
+        "schedule_place": "Main Lobby",
+        "schedule_day": "three"
+      },
+      {
+        "schedule_id": "16",
+        "schedule_start_time": "08:30",
+        "schedule_end_time": "10:00",
+        "schedule_title": "Committee Session V",
+        "schedule_place": "Main Lobby",
+        "schedule_day": "three"
+      },
+      {
+        "schedule_id": "17",
+        "schedule_start_time": "10:00",
+        "schedule_end_time": "10:15",
+        "schedule_title": "Coffee Break",
+        "schedule_place": "Main Lobby",
+        "schedule_day": "three"
+      },
+      {
+        "schedule_id": "18",
+        "schedule_start_time": "10:15",
+        "schedule_end_time": "11:45",
+        "schedule_title": "Committee Session VI",
+        "schedule_place": "Main Lobby",
+        "schedule_day": "three"
+      },
+      {
+        "schedule_id": "19",
+        "schedule_start_time": "11:45",
+        "schedule_end_time": "12:30",
+        "schedule_title": "Lunch Break",
+        "schedule_place": "Main Lobby",
+        "schedule_day": "three"
+      },
+      {
+        "schedule_id": "20",
+        "schedule_start_time": "12:45",
+        "schedule_end_time": "15:15",
+        "schedule_title": "Committee Session VII",
+        "schedule_place": "Main Lobby",
+        "schedule_day": "three"
+      },
+      {
+        "schedule_id": "21",
+        "schedule_start_time": "15:15",
+        "schedule_end_time": "15:30",
+        "schedule_title": "Coffee Break",
+        "schedule_place": "Main Lobby",
+        "schedule_day": "three"
+      },
+      {
+        "schedule_id": "22",
+        "schedule_start_time": "15:30",
+        "schedule_end_time": "16:45",
+        "schedule_title": "Committee Sesssion VIII",
+        "schedule_place": "Main Lobby",
+        "schedule_day": "three"
+      },
+      {
+        "schedule_id": "23",
+        "schedule_start_time": "20:00",
+        "schedule_end_time": "23:30",
+        "schedule_title": "Closing Ceremony",
+        "schedule_place": "Main Lobby",
+        "schedule_day": "three"
+      },
+      {
+        "schedule_id": "24",
+        "schedule_start_time": "07:30",
+        "schedule_end_time": "08:00",
+        "schedule_title": "Check Out",
+        "schedule_place": "Main Lobby",
+        "schedule_day": "four"
+      },
+      {
+        "schedule_id": "25",
+        "schedule_start_time": "09:00",
+        "schedule_end_time": "12:30",
+        "schedule_title": "Cultural Trip",
+        "schedule_place": "Main Lobby",
+        "schedule_day": "four"
+      },
+      {
+        "schedule_id": "26",
+        "schedule_start_time": "12:30",
+        "schedule_end_time": "14:00",
+        "schedule_title": "Lunch",
+        "schedule_place": "Main Lobby",
+        "schedule_day": "four"
+      }
+      
+    ]
+  }
+  

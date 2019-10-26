@@ -1,0 +1,28 @@
+{
+    "merch": [
+        {
+            "merch_id": "1",
+            "merch_name": "STAYS IN MUN",
+            "merch_image": "https://firebasestorage.googleapis.com/v0/b/joinmun-864f5.appspot.com/o/stays.png?alt=media&token=f5eebff2-843c-4ded-8530-a1bf62759b9e",
+            "merch_price": "Rp80.000"
+        },
+        {
+            "merch_id": "2",
+            "merch_name": "CHINA 2.0",
+            "merch_image": "https://firebasestorage.googleapis.com/v0/b/joinmun-864f5.appspot.com/o/China%202.0.png?alt=media&token=f9125ce1-b0a2-4a74-9b6b-399a866fc812",
+            "merch_price": "Rp80.000"
+        },
+        {
+            "merch_id": "3",
+            "merch_name": "JOINMUN",
+            "merch_image": "https://firebasestorage.googleapis.com/v0/b/joinmun-864f5.appspot.com/o/JOINMUN.png?alt=media&token=7c72130b-4ca0-433e-8605-0abd746d068f",
+            "merch_price": "Rp60.000"
+        },
+        {
+            "merch_id": "4",
+            "merch_name": "CHERNOBYL",
+            "merch_image": "https://firebasestorage.googleapis.com/v0/b/joinmun-864f5.appspot.com/o/Cherno.png?alt=media&token=5e26afe7-40b6-4745-a5c2-254a7fd239a4",
+            "merch_price": "Rp60.000"
+        }
+    ]
+}

@@ -1,0 +1,40 @@
+{
+    "events": [
+        {
+            "event_id": "1",
+            "event_image": "https://firebasestorage.googleapis.com/v0/b/joinmun-864f5.appspot.com/o/candi-prambanan.jpg?alt=media&token=ebce8ceb-280d-4050-9c01-ea0d00514709",
+            "event_title": "Opening Ceremony",
+            "event_date": "Thursday, 24 October",
+            "event_place": "Lapangan Garuda, Prambanan Temple",
+            "event_dresscode": "Smart Casual",
+            "event_description": "Welcoming delegates with a fabulous opening at Prambanan Temple, this event will regale delegates with cultural performances and speeches from three amazing speakers. Delegates will also have dinner under the stars, surrounded by the spectacular Prambanan Temple. No worries for beginner MUNers as we will have a MUN 101 for you to learn the procedures of a MUN."
+        },
+        {
+            "event_id": "2",
+            "event_image": "https://firebasestorage.googleapis.com/v0/b/joinmun-864f5.appspot.com/o/Committee%20Sessions-min.JPG?alt=media&token=e0e1ef2e-2759-4e3f-853a-3b55a4398c42",
+            "event_title": "Committee Sessions",
+            "event_date": "Friday, 25 October & Saturday, 26 October",
+            "event_place": "Sheraton Mustika Yogyakarta Resort & Spa",
+            "event_dresscode": "Business Attire",
+            "event_description": "Committee session is the main event of JOINMUN 2019. There will be seven councils (DISEC, UNDP, ILO, UNSC, ASEAN, ICTY, JCC) and Press Committee. For two days straight, the delegates’ skill in speech, diplomacy, and research will be put into test through six committee sessions on the topic of their respective councils."
+        },
+        {
+            "event_id": "3",
+            "event_image": "https://firebasestorage.googleapis.com/v0/b/joinmun-864f5.appspot.com/o/Social%20night-min.PNG?alt=media&token=402b5567-ed74-4989-a34d-11ca6ddb6293",
+            "event_title": "Social Night",
+            "event_date": "Friday, 25 October",
+            "event_place": "Mezzanine",
+            "event_dresscode": "Halloween! Bring out your best costume! Its Halloween season!",
+            "event_description": "Unwind, relax, and dress up spooky with your MUN clique at JOINMUN’s halloween themed party! As the music turns up and the light turns down, feel the most intimate social night you would experience among all MUN conferences you will ever attend. If you’re a lowkey party goer, you can always holler at our booths on face painting, tarot reading, and more!"
+        },
+        {
+            "event_id": "4",
+            "event_image": "https://firebasestorage.googleapis.com/v0/b/joinmun-864f5.appspot.com/o/Closing-min.JPG?alt=media&token=c05d3e26-89a7-4501-bfc7-802aa87e9b86",
+            "event_title": "Closing Ceremony",
+            "event_date": "Saturday, 26 October",
+            "event_place": "Sheraton Mustika Yogyakarta Resort & Spa Main Ballroom",
+            "event_dresscode": "Suits and Gowns! Come in your best suits and gowns",
+            "event_description": "After finishing the remarkable conferences and social night, the closing ceremony invites all the delegates one last time to celebrate. Delegates will be welcomed with a spectacular dinner accompanied by delightful music performances. The peak of the closing ceremony is the long awaited Awarding Night to appreciate outstanding delegates throughout the conference."
+        }
+    ]
+}
